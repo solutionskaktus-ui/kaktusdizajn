@@ -1,0 +1,22 @@
+# Kaktus Dizajn — robots.txt
+# Dozvoljeno svim crawler-ima da indeksiraju sajt
+
+User-agent: *
+Allow: /
+Disallow:
+
+# Specifično za AI crawler-e (sve dozvoljeno)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap lokacija
+Sitemap: https://kaktusdizajn.com/sitemap.xml
