@@ -1,2 +1,0 @@
-# kaktusdizajn
-Kaktus Dizajn portfolio
