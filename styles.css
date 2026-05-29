@@ -1424,3 +1424,101 @@ html.has-cursor, html.has-cursor body { cursor: none; }
   }
   .cs-scope-num { font-size: 0.7rem; }
 }
+
+/* ============================================================
+   Helper klase (zamenjuju inline style="" u case study stranicama)
+   ============================================================ */
+.cs-no-top-padding { padding-top: 0; }
+.cs-spacer-narrow-2 { max-width: 680px; color: var(--text-muted); margin-bottom: 2rem; }
+.cs-spacer-narrow-25 { max-width: 680px; color: var(--text-muted); margin-bottom: 2.5rem; }
+.cs-label-mini {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+.cs-palette-spacer { margin-bottom: 2rem; }
+.cs-palette-spacer-large { margin-bottom: 2.5rem; }
+.cs-cta-center { text-align: center; }
+.cs-cta-lead {
+  max-width: 540px;
+  margin: 1.5rem auto 2.5rem;
+}
+.cs-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cs-section-divider { padding-top: 0; }
+.footer-brand-link {
+  margin-bottom: 1rem;
+  display: inline-flex;
+}
+.footer-tagline {
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  max-width: 280px;
+}
+
+/* Inline color swatches u paleti */
+.cs-color-orange { background: #F06E28; color: #fff; }
+.cs-color-darkgrey { background: #414141; color: #fff; }
+.cs-color-mediumgrey { background: #828282; color: #fff; }
+.cs-color-lightgrey { background: #CDCDCD; color: #1a1a1a; }
+.cs-color-navy { background: #1D2D3E; color: #fff; }
+.cs-color-green { background: #2E5A44; color: #fff; }
+.cs-color-yellow { background: #E5B022; color: #1a1a1a; }
+
+/* Logo tile sa custom pozadinom */
+.cs-logo-tile.brand-orange { background: #F06E28; }
+.cs-logo-tile.brand-orange .cs-logo-tile-label { color: rgba(0,0,0,0.6); }
+.cs-logo-tile.dark .cs-logo-tile-label-on-dark { color: rgba(255,255,255,0.6); }
+
+/* Brief paragraf override */
+.cs-brief-body-paragraph {
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+/* "Back to portfolio" sticky link na case study stranicama (SEO + UX) */
+.cs-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+.cs-back-link:hover { color: var(--gold); }
+.cs-back-link::before {
+  content: '←';
+  display: inline-block;
+  transition: transform 0.2s;
+}
+.cs-back-link:hover::before { transform: translateX(-3px); }
+
+/* ============================================================
+   Utility klase za zamenu inline stilova
+   ============================================================ */
+.u-text-center { text-align: center; }
+.u-mb-3 { margin-bottom: 3rem; }
+.u-mb-15 { margin-bottom: 1.5rem; }
+.u-mt-1 { margin-top: 1rem; }
+.u-mt-15 { margin-top: 1.5rem; }
+.u-mt-2 { margin-top: 2rem; }
+.u-mt-25 { margin-top: 2.5rem; }
+.u-mt-3 { margin-top: 3rem; }
+.u-bg-elevated { background: var(--bg-elevated); }
+.u-no-top-padding { padding-top: 0; }
+.u-narrow-560 { max-width: 560px; margin-left: auto; margin-right: auto; }
+.u-narrow-580 { max-width: 580px; }
+.u-narrow-60ch { max-width: 60ch; }
+.u-narrow-65ch { max-width: 65ch; }
