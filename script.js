@@ -267,3 +267,65 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 })();
+
+// =========================================================
+// INTERAKTIVNI HERO KAKTUS — prati miš (parallax tilt)
+// =========================================================
+(function(){
+  const heroCactus = document.getElementById('heroCactus');
+  const hero3d = document.querySelector('.hero-3d');
+  if (!heroCactus || !hero3d) return;
+
+  // Samo na desktopu (touch nema miša)
+  if (window.matchMedia('(hover: none)').matches) return;
+
+  let targetRotX = 0, targetRotY = 0;
+  let curRotX = 0, curRotY = 0;
+  let rafId = null;
+
+  const heroSection = document.querySelector('.hero');
+  if (!heroSection) return;
+
+  heroSection.addEventListener('mousemove', (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    // Pozicija miša relativno na centar hero sekcije (-1 do 1)
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    // Blagi tilt — max 12deg
+    targetRotY = px * 24;
+    targetRotX = -py * 16;
+    if (!rafId) animate();
+  });
+
+  heroSection.addEventListener('mouseleave', () => {
+    targetRotX = 0;
+    targetRotY = 0;
+    if (!rafId) animate();
+  });
+
+  function animate(){
+    // Lerp ka cilju (smooth)
+    curRotX += (targetRotX - curRotX) * 0.08;
+    curRotY += (targetRotY - curRotY) * 0.08;
+
+    hero3d.style.transform = `perspective(1000px) rotateX(${curRotX.toFixed(2)}deg) rotateY(${curRotY.toFixed(2)}deg)`;
+
+    // Nastavi dok se ne smiri
+    if (Math.abs(targetRotX - curRotX) > 0.05 || Math.abs(targetRotY - curRotY) > 0.05) {
+      rafId = requestAnimationFrame(animate);
+    } else {
+      rafId = null;
+    }
+  }
+
+  // model-viewer camera-orbit reaguje takođe (suptilno okreće 3D model)
+  heroSection.addEventListener('mousemove', (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    // Blagi pomak orbita kamere
+    const orbitDeg = px * 30; // -15 do +15 stepeni
+    if (heroCactus.cameraOrbit !== undefined) {
+      heroCactus.cameraOrbit = `${orbitDeg}deg 75deg 105%`;
+    }
+  });
+})();
