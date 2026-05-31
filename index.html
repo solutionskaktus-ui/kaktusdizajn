@@ -13,8 +13,8 @@
   gtag('config', 'G-Y9WL0TMXDC');
 </script>
 
-<!-- model-viewer (3D kaktus) -->
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<!-- model-viewer (3D kaktus) — učitava se odloženo da ne blokira render -->
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js" defer></script>
 
 <!-- PRIMARY META -->
 <title>Kaktus Dizajn — Vrhunski Grafički Dizajn, Logo i Brending u Srbiji</title>
@@ -161,26 +161,6 @@
 <!-- Scroll progress -->
 <div class="scroll-progress" aria-hidden="true"></div>
 
-<!-- Floating kaktus (vidljiv posle hero sekcije, desktop) -->
-<div class="floating-cactus" id="floatingCactus" aria-hidden="true">
-  <model-viewer
-    src="cactus.glb"
-    alt="Kaktus 3D"
-    auto-rotate
-    auto-rotate-delay="0"
-    rotation-per-second="30deg"
-    camera-controls="false"
-    disable-zoom
-    disable-pan
-    interaction-prompt="none"
-    shadow-intensity="0"
-    exposure="0.85"
-    environment-image="neutral"
-    camera-orbit="0deg 75deg 105%"
-    field-of-view="30deg">
-  </model-viewer>
-</div>
-
 <a href="#main" class="skip-link">Preskoči na glavni sadržaj</a>
 
 <!-- HEADER -->
@@ -243,18 +223,15 @@
           id="heroCactus"
           src="cactus.glb"
           alt="Kaktus 3D model"
-          auto-rotate
-          auto-rotate-delay="500"
-          rotation-per-second="20deg"
           camera-controls
           disable-pan
           disable-zoom
           shadow-intensity="0"
           exposure="0.95"
-          environment-image="neutral"
-          camera-orbit="0deg 75deg 105%"
+          camera-orbit="0deg 78deg 105%"
           field-of-view="30deg"
-          interaction-prompt="none">
+          interaction-prompt="none"
+          loading="lazy">
         </model-viewer>
       </div>
     </div>

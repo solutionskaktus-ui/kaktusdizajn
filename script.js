@@ -317,15 +317,4 @@ document.addEventListener('DOMContentLoaded', () => {
       rafId = null;
     }
   }
-
-  // model-viewer camera-orbit reaguje takođe (suptilno okreće 3D model)
-  heroSection.addEventListener('mousemove', (e) => {
-    const rect = heroSection.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width - 0.5;
-    // Blagi pomak orbita kamere
-    const orbitDeg = px * 30; // -15 do +15 stepeni
-    if (heroCactus.cameraOrbit !== undefined) {
-      heroCactus.cameraOrbit = `${orbitDeg}deg 75deg 105%`;
-    }
-  });
 })();
