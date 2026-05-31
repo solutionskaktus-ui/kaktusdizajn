@@ -1006,8 +1006,9 @@ html.has-cursor, html.has-cursor body { cursor: none; }
 
 /* ---- Hero 3D kaktus ---- */
 .hero-3d{position:relative;z-index:1;width:100%;height:460px;display:flex;align-items:center;justify-content:center}
-.hero-3d model-viewer{width:100%;height:100%;background-color:transparent;--poster-color:transparent;opacity:0;transform:translateX(120px) scale(0.6);transition:opacity 1.2s cubic-bezier(0.16,1,0.3,1) 0.6s, transform 1.4s cubic-bezier(0.16,1,0.3,1) 0.6s}
-.hero-3d model-viewer.loaded{opacity:1;transform:translateX(0) scale(1)}
+.hero-cactus-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;opacity:0;transform:translateY(20px) scale(0.92);animation:cactusReveal 1s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.35))}
+@keyframes cactusReveal{to{opacity:1;transform:translateY(0) scale(1)}}
+@media (prefers-reduced-motion: reduce){.hero-cactus-img{animation:none;opacity:1;transform:none}}
 
 /* ---- Floating kaktus (pliva pri skrolovanju) ---- */
 .floating-cactus{position:fixed;width:75px;height:75px;z-index:50;pointer-events:none;opacity:0;transition:opacity 0.6s ease;will-change:transform,left,top;animation:cactusBob 4s ease-in-out infinite}

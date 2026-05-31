@@ -72,22 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
 (function(){
   const isDesktop = window.matchMedia('(min-width: 769px)').matches;
 
-  // ---------- Hero kaktus: load animacija ----------
-  const heroCactus = document.getElementById('heroCactus');
-  if (heroCactus) {
-    heroCactus.addEventListener('load', () => {
-      setTimeout(() => heroCactus.classList.add('loaded'), 200);
-    });
-    // Fallback ako load event ne pukne
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        if (!heroCactus.classList.contains('loaded')) {
-          heroCactus.classList.add('loaded');
-        }
-      }, 1500);
-    });
-  }
-
   // ---------- Custom kurzor (samo desktop, ne na touch uređajima) ----------
   const dot = document.querySelector('.cursor-dot');
   const outline = document.querySelector('.cursor-outline');
@@ -272,9 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // INTERAKTIVNI HERO KAKTUS — prati miš (parallax tilt)
 // =========================================================
 (function(){
-  const heroCactus = document.getElementById('heroCactus');
   const hero3d = document.querySelector('.hero-3d');
-  if (!heroCactus || !hero3d) return;
+  if (!hero3d) return;
 
   // Samo na desktopu (touch nema miša)
   if (window.matchMedia('(hover: none)').matches) return;

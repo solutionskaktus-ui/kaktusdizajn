@@ -13,8 +13,7 @@
   gtag('config', 'G-Y9WL0TMXDC');
 </script>
 
-<!-- model-viewer (3D kaktus) — učitava se odloženo da ne blokira render -->
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js" defer></script>
+
 
 <!-- PRIMARY META -->
 <title>Kaktus Dizajn — Vrhunski Grafički Dizajn, Logo i Brending u Srbiji</title>
@@ -217,22 +216,12 @@
         </div>
       </div>
 
-      <!-- Hero 3D kaktus -->
+      <!-- Hero kaktus (statična slika — brza, tilt na miš preko JS) -->
       <div class="hero-3d" aria-hidden="true">
-        <model-viewer
-          id="heroCactus"
-          src="cactus.glb"
-          alt="Kaktus 3D model"
-          camera-controls
-          disable-pan
-          disable-zoom
-          shadow-intensity="0"
-          exposure="0.95"
-          camera-orbit="0deg 78deg 105%"
-          field-of-view="30deg"
-          interaction-prompt="none"
-          loading="lazy">
-        </model-viewer>
+        <picture>
+          <source srcset="cactus-hero.webp" type="image/webp">
+          <img src="cactus-hero.png" alt="" width="700" height="750" fetchpriority="high" decoding="async" class="hero-cactus-img">
+        </picture>
       </div>
     </div>
 
