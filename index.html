@@ -56,8 +56,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<!-- Fontovi učitani asinhrono da ne blokiraju prvi render -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+</noscript>
 
 <!-- STYLES -->
 <link rel="stylesheet" href="styles.css">
@@ -220,7 +225,7 @@
       <div class="hero-3d" aria-hidden="true">
         <picture>
           <source srcset="cactus-hero.webp" type="image/webp">
-          <img src="cactus-hero.png" alt="" width="700" height="750" fetchpriority="high" decoding="async" class="hero-cactus-img">
+          <img src="cactus-hero.png" alt="" width="334" height="358" fetchpriority="high" decoding="async" class="hero-cactus-img">
         </picture>
       </div>
     </div>
