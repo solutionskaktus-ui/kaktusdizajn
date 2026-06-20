@@ -344,6 +344,7 @@
             </button>
           </div>
           <div class="calc2-step-label" style="margin-top:1.5rem;">Dodaci</div>
+          <p class="calc2-hint" id="brand-addons-note" hidden>Uključeni u paket „Pun brend".</p>
           <div class="calc2-addons">
             <label class="calc2-addon">
               <input type="checkbox" id="add-vizit" onchange="calc2Update()">
@@ -354,8 +355,12 @@
               <span>Memorandum <em>+20€</em></span>
             </label>
             <label class="calc2-addon">
+              <input type="checkbox" id="add-uniforme" onchange="calc2Update()">
+              <span>Uniforme / radna odeća <em>+40€</em></span>
+            </label>
+            <label class="calc2-addon">
               <input type="checkbox" id="add-stampa" onchange="calc2Update()">
-              <span>Priprema za štampu (CMYK) <em>+35€</em></span>
+              <span>Priprema za štampu (CMYK) <em>+15€</em></span>
             </label>
           </div>
         </div>
@@ -375,6 +380,10 @@
             <span class="calc2-row-label">Broj kreativa: <strong id="meta-count">1</strong></span>
             <input type="range" min="1" max="10" value="1" id="meta-slider" class="calc2-slider" oninput="calc2Update()">
             <div class="calc2-slider-scale"><span>1</span><span>5</span><span>10+</span></div>
+            <div class="calc2-custom-count" id="meta-custom" hidden>
+              <label for="meta-custom-input">Tačan broj kreativa (10+):</label>
+              <input type="number" min="10" max="200" value="10" id="meta-custom-input" class="calc2-num" oninput="calc2Update()">
+            </div>
           </div>
           <p class="calc2-hint">Story verzija (1080×1920) je uključena u svaku kreativu. Veće količine — bolja cena po komadu.</p>
         </div>

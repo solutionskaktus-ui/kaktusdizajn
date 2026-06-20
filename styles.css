@@ -280,10 +280,11 @@ section { padding-block: var(--section-pad); position: relative; }
   50% { opacity: 0.4; }
 }
 .hero h1 {
-  font-size: clamp(3rem, 8vw, 6.5rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 0.95;
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
   margin-bottom: 1.5rem;
   /* Fallback: tekst je odmah vidljiv punim bojama */
   color: var(--text);
@@ -311,7 +312,7 @@ section { padding-block: var(--section-pad); position: relative; }
     -webkit-background-clip: text;
     background-clip: text;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     animation: heroFillGold 1.1s cubic-bezier(0.65, 0.05, 0.2, 1) 0.7s forwards;
   }
 }
@@ -1816,3 +1817,19 @@ html.has-cursor, html.has-cursor body { cursor: none; }
   .calc2-result { position: static; }
   .calc2-cats { grid-template-columns: 1fr; }
 }
+
+/* Kalkulator — custom broj kreativa + uključeni dodaci */
+.calc2-custom-count { margin-top: 0.85rem; display: flex; flex-direction: column; gap: 0.4rem; animation: calc2FadeIn 0.3s ease; }
+.calc2-custom-count label { font-size: 0.8rem; color: var(--text-muted); }
+.calc2-num {
+  background: var(--bg-elevated); border: 1.5px solid var(--border);
+  border-radius: 10px; padding: 0.6rem 0.85rem; color: var(--text);
+  font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+  width: 120px; transition: border-color 0.2s;
+}
+.calc2-num:focus { outline: none; border-color: var(--gold); }
+.calc2-addon-included { opacity: 0.65; }
+.calc2-addon-included input { accent-color: var(--green); }
+.calc2-addon-included span::after { content: ' ✓ uklj.'; color: var(--green); font-size: 0.72rem; font-style: italic; }
+.calc2-addon-included em { display: none; }
+.calc2-bd-incl span:last-child { color: var(--green) !important; font-style: italic; }

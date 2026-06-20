@@ -322,8 +322,8 @@ document.addEventListener('DOMContentLoaded', () => {
     levelMult: { 'std': 1.0, 'prem': 1.35 },
     brand: { 1: 70, 2: 240, 3: 590 },
     brandNames: { 1: 'Branding — Logo+', 2: 'Branding — Identitet', 3: 'Branding — Pun brend' },
-    addons: { vizit: 25, memo: 20, stampa: 35 },
-    addonNames: { vizit: 'Vizit karta', memo: 'Memorandum', stampa: 'Priprema za štampu' },
+    addons: { vizit: 25, memo: 20, uniforme: 40, stampa: 15 },
+    addonNames: { vizit: 'Vizit karta', memo: 'Memorandum', uniforme: 'Uniforme / radna odeća', stampa: 'Priprema za štampu' },
     metaBase: { 'std': 15, 'prem': 30 }
   };
 
@@ -395,25 +395,55 @@ document.addEventListener('DOMContentLoaded', () => {
       let brand = PRICES.brand[state.brandLevel];
       breakdown.push({ label: PRICES.brandNames[state.brandLevel], price: brand });
       total += brand;
-      // Dodaci
-      ['vizit','memo','stampa'].forEach(a => {
+
+      // Ako je Pun brend (nivo 3) — dodaci su uključeni, checkboxovi disabled
+      const isFullBrand = (state.brandLevel === 3);
+      const addonsNote = document.getElementById('brand-addons-note');
+      if (addonsNote) addonsNote.hidden = !isFullBrand;
+
+      ['vizit','memo','uniforme','stampa'].forEach(a => {
         const cb = document.getElementById('add-'+a);
-        if (cb && cb.checked) {
-          total += PRICES.addons[a];
-          breakdown.push({ label: PRICES.addonNames[a], price: PRICES.addons[a], sub: true });
+        if (!cb) return;
+        const wrapper = cb.closest('.calc2-addon');
+        if (isFullBrand) {
+          // Uključeno u paket — onemogući i prikaži kao deo paketa
+          cb.disabled = true;
+          if (wrapper) wrapper.classList.add('calc2-addon-included');
+          breakdown.push({ label: PRICES.addonNames[a], price: 0, included: true });
+        } else {
+          cb.disabled = false;
+          if (wrapper) wrapper.classList.remove('calc2-addon-included');
+          if (cb.checked) {
+            total += PRICES.addons[a];
+            breakdown.push({ label: PRICES.addonNames[a], price: PRICES.addons[a], sub: true });
+          }
         }
       });
     }
 
     // META ADS
     if (wantMeta) {
-      const n = parseInt(document.getElementById('meta-slider').value, 10);
-      document.getElementById('meta-count').textContent = n >= 10 ? '10+' : n;
+      let n = parseInt(document.getElementById('meta-slider').value, 10);
+      const customWrap = document.getElementById('meta-custom');
+      const customInput = document.getElementById('meta-custom-input');
+
+      if (n >= 10) {
+        // Prikaži polje za tačan unos
+        if (customWrap) customWrap.hidden = false;
+        let custom = parseInt(customInput.value, 10);
+        if (isNaN(custom) || custom < 10) custom = 10;
+        n = custom;
+        document.getElementById('meta-count').textContent = n;
+      } else {
+        if (customWrap) customWrap.hidden = true;
+        document.getElementById('meta-count').textContent = n;
+      }
+
       const base = PRICES.metaBase[state.metaLevel];
       const disc = metaDiscount(n);
       let meta = Math.round(base * (1 - disc) * n);
       total += meta;
-      let lbl = `Meta Ads — ${n>=10?'10+':n} ${n===1?'kreativa':'kreativa'} (${state.metaLevel==='prem'?'Premium':'Standard'})`;
+      let lbl = `Meta Ads — ${n} kreativa (${state.metaLevel==='prem'?'Premium':'Standard'})`;
       breakdown.push({ label: lbl, price: meta });
       if (disc > 0) {
         breakdown.push({ label: `Količinski popust −${Math.round(disc*100)}%`, price: 0, note: true });
@@ -452,6 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Breakdown lista
     bdEl.innerHTML = breakdown.map(item => {
       if (item.note) return `<li class="calc2-bd-note">${item.label}</li>`;
+      if (item.included) return `<li class="calc2-bd-sub calc2-bd-incl"><span>${item.label}</span><span>uklj.</span></li>`;
       let cls = item.sub ? 'calc2-bd-sub' : '';
       if (item.discount) cls += ' calc2-bd-disc';
       const price = item.price === 0 ? '' : (item.price < 0 ? item.price+'€' : item.price+'€');
@@ -462,6 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let msg = 'Zdravo! Zainteresovan/a sam za:\n\n';
     breakdown.forEach(item => {
       if (item.note || item.discount) return;
+      if (item.included) { msg += `• ${item.label}: uključeno\n`; return; }
       msg += `• ${item.label}: ${item.price}€\n`;
     });
     msg += `\nUkupno (okvirno): ${total}€\n\nPoslato preko kalkulatora na sajtu.`;
@@ -471,8 +503,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Reset
   window.calc2Reset = function(){
-    ['cat-logo','cat-branding','cat-meta','add-vizit','add-memo','add-stampa'].forEach(id => {
-      const el = document.getElementById(id); if (el) el.checked = false;
+    ['cat-logo','cat-branding','cat-meta','add-vizit','add-memo','add-uniforme','add-stampa'].forEach(id => {
+      const el = document.getElementById(id); if (el) { el.checked = false; el.disabled = false; }
     });
     document.getElementById('meta-slider').value = 1;
     Object.assign(state, { logoConcepts:1, logoLevel:'std', logoRev:2, brandLevel:1, metaLevel:'std' });
