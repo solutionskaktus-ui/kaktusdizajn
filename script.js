@@ -301,3 +301,190 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 })();
+
+// =========================================================
+// KALKULATOR CENE v2 (Kaktus Dizajn)
+// =========================================================
+(function(){
+  // Stanje
+  const state = {
+    logoConcepts: 1, logoLevel: 'std', logoRev: 2,
+    brandLevel: 1,
+    metaLevel: 'std'
+  };
+  window.__calc2state = state;
+
+  // Cene
+  const PRICES = {
+    logoBase: 70,
+    logoConcept: { 1: 0, 3: 25, 5: 45 },
+    logoRev: { 2: 0, 5: 15, 'unl': 35 },
+    levelMult: { 'std': 1.0, 'prem': 1.35 },
+    brand: { 1: 70, 2: 240, 3: 590 },
+    brandNames: { 1: 'Branding — Logo+', 2: 'Branding — Identitet', 3: 'Branding — Pun brend' },
+    addons: { vizit: 25, memo: 20, stampa: 35 },
+    addonNames: { vizit: 'Vizit karta', memo: 'Memorandum', stampa: 'Priprema za štampu' },
+    metaBase: { 'std': 15, 'prem': 30 }
+  };
+
+  // Volume popust za Meta (blaži)
+  function metaDiscount(n){
+    if (n <= 2) return 0;
+    if (n <= 5) return 0.07;
+    if (n <= 9) return 0.12;
+    return 0.15;
+  }
+
+  // Segmented dugme handler
+  window.calc2Seg = function(btn, key, val){
+    const group = btn.parentElement;
+    group.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state[key] = val;
+    calc2Update();
+  };
+
+  // Glavni update
+  window.calc2Update = function(){
+    const wantLogo = document.getElementById('cat-logo').checked;
+    const wantBrand = document.getElementById('cat-branding').checked;
+    const wantMeta = document.getElementById('cat-meta').checked;
+
+    // Logo se sakriva ako je Branding čekiran (logo je već u brendingu)
+    const logoCat = document.querySelector('label.calc2-cat:has(#cat-logo)');
+    if (wantBrand) {
+      if (logoCat) logoCat.classList.add('calc2-cat-disabled');
+      document.getElementById('cat-logo').checked = false;
+    } else {
+      if (logoCat) logoCat.classList.remove('calc2-cat-disabled');
+    }
+    const logoActive = document.getElementById('cat-logo').checked && !wantBrand;
+
+    // Prikaži/sakrij sekcije
+    document.getElementById('sec-logo').hidden = !logoActive;
+    document.getElementById('sec-branding').hidden = !wantBrand;
+    document.getElementById('sec-meta').hidden = !wantMeta;
+
+    // Meta hint po nivou
+    const metaHint = document.getElementById('meta-hint');
+    if (metaHint) {
+      metaHint.textContent = state.metaLevel === 'std'
+        ? 'Standard: ti šalješ gotov naslov, CTA i koncept — mi dizajniramo.'
+        : 'Premium: mi smišljamo naslov, CTA i celu kompoziciju kreative.';
+    }
+
+    let total = 0;
+    const breakdown = [];
+
+    // LOGO
+    if (logoActive) {
+      let logo = PRICES.logoBase + PRICES.logoConcept[state.logoConcepts];
+      logo = logo * PRICES.levelMult[state.logoLevel];
+      logo += PRICES.logoRev[state.logoRev];
+      logo = Math.round(logo);
+      total += logo;
+      let lbl = `Logo (${state.logoConcepts} ${state.logoConcepts==1?'koncept':'koncepta'}`;
+      lbl += state.logoLevel==='prem' ? ', Premium' : '';
+      lbl += state.logoRev!==2 ? `, ${state.logoRev==='unl'?'neogr.':state.logoRev} revizija` : '';
+      lbl += ')';
+      breakdown.push({ label: lbl, price: logo });
+    }
+
+    // BRANDING
+    if (wantBrand) {
+      let brand = PRICES.brand[state.brandLevel];
+      breakdown.push({ label: PRICES.brandNames[state.brandLevel], price: brand });
+      total += brand;
+      // Dodaci
+      ['vizit','memo','stampa'].forEach(a => {
+        const cb = document.getElementById('add-'+a);
+        if (cb && cb.checked) {
+          total += PRICES.addons[a];
+          breakdown.push({ label: PRICES.addonNames[a], price: PRICES.addons[a], sub: true });
+        }
+      });
+    }
+
+    // META ADS
+    if (wantMeta) {
+      const n = parseInt(document.getElementById('meta-slider').value, 10);
+      document.getElementById('meta-count').textContent = n >= 10 ? '10+' : n;
+      const base = PRICES.metaBase[state.metaLevel];
+      const disc = metaDiscount(n);
+      let meta = Math.round(base * (1 - disc) * n);
+      total += meta;
+      let lbl = `Meta Ads — ${n>=10?'10+':n} ${n===1?'kreativa':'kreativa'} (${state.metaLevel==='prem'?'Premium':'Standard'})`;
+      breakdown.push({ label: lbl, price: meta });
+      if (disc > 0) {
+        breakdown.push({ label: `Količinski popust −${Math.round(disc*100)}%`, price: 0, note: true });
+      }
+      // -10% popust na Meta deo
+      const metaDisc10 = Math.round(meta * 0.10);
+      if (metaDisc10 > 0) {
+        total -= metaDisc10;
+        breakdown.push({ label: 'Meta popust −10%', price: -metaDisc10, discount: true });
+      }
+    }
+
+    // Render
+    const priceEl = document.getElementById('calc2-price');
+    const noteEl = document.getElementById('calc2-note');
+    const bdEl = document.getElementById('calc2-breakdown');
+    const waEl = document.getElementById('calc2-wa');
+    const resetEl = document.getElementById('calc2-reset-btn');
+
+    const anything = logoActive || wantBrand || wantMeta;
+
+    if (!anything || total <= 0) {
+      priceEl.textContent = '—';
+      noteEl.textContent = 'Izaberi bar jednu uslugu da vidiš cenu.';
+      noteEl.hidden = false;
+      bdEl.innerHTML = '';
+      waEl.hidden = true;
+      resetEl.hidden = true;
+      return;
+    }
+
+    priceEl.textContent = total + '€';
+    noteEl.hidden = true;
+    resetEl.hidden = false;
+
+    // Breakdown lista
+    bdEl.innerHTML = breakdown.map(item => {
+      if (item.note) return `<li class="calc2-bd-note">${item.label}</li>`;
+      let cls = item.sub ? 'calc2-bd-sub' : '';
+      if (item.discount) cls += ' calc2-bd-disc';
+      const price = item.price === 0 ? '' : (item.price < 0 ? item.price+'€' : item.price+'€');
+      return `<li class="${cls}"><span>${item.label}</span><span>${price}</span></li>`;
+    }).join('');
+
+    // WhatsApp link sa specifikacijom
+    let msg = 'Zdravo! Zainteresovan/a sam za:\n\n';
+    breakdown.forEach(item => {
+      if (item.note || item.discount) return;
+      msg += `• ${item.label}: ${item.price}€\n`;
+    });
+    msg += `\nUkupno (okvirno): ${total}€\n\nPoslato preko kalkulatora na sajtu.`;
+    waEl.href = 'https://wa.me/381600750754?text=' + encodeURIComponent(msg);
+    waEl.hidden = false;
+  };
+
+  // Reset
+  window.calc2Reset = function(){
+    ['cat-logo','cat-branding','cat-meta','add-vizit','add-memo','add-stampa'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.checked = false;
+    });
+    document.getElementById('meta-slider').value = 1;
+    Object.assign(state, { logoConcepts:1, logoLevel:'std', logoRev:2, brandLevel:1, metaLevel:'std' });
+    // Reset segmented dugmad
+    document.querySelectorAll('.calc2-segmented, .calc2-levels').forEach(g => {
+      g.querySelectorAll('button').forEach((b,i) => b.classList.toggle('active', i===0));
+    });
+    calc2Update();
+  };
+
+  // Init na učitavanje
+  if (document.getElementById('calc2-price')) {
+    calc2Update();
+  }
+})();

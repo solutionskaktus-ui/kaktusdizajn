@@ -256,92 +256,144 @@
 <section class="calculator-section" id="kalkulator">
   <div class="container">
     <div class="reveal u-text-center u-mb-3">
-      <div class="section-label">Brzi pronalazač</div>
-      <h2>Pronađi <span class="accent">svoj paket</span>.</h2>
+      <div class="section-label">Kalkulator cene</div>
+      <h2>Izračunaj <span class="accent">svoju ponudu</span>.</h2>
       <p class="lead u-narrow-560 u-mt-1">
-        Odgovori na 3 pitanja i predložićemo ti idealan paket. Traje 30 sekundi.
+        Izaberi šta ti treba i odmah vidiš okvirnu cenu. Bez obaveza.
       </p>
     </div>
 
-    <div class="calculator-box reveal">
-      <div class="calc-progress">
-        <div class="calc-dot active"></div>
-        <div class="calc-dot"></div>
-        <div class="calc-dot"></div>
-        <div class="calc-dot"></div>
-      </div>
+    <div class="calc2">
+      <!-- LEVA STRANA: izbori -->
+      <div class="calc2-form">
 
-      <div class="calc-step active" data-step="1">
-        <h3 class="calc-question">Šta ti je najpotrebnije?</h3>
-        <p class="calc-subtitle">Izaberi šta najbolje opisuje tvoju trenutnu potrebu</p>
-        <div class="calc-options">
-          <button type="button" class="calc-option" onclick="selectOption(this,'need','brand')">
-            <div class="calc-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div>
-            <div class="calc-option-content"><div class="calc-option-title">Brending — logo i identitet</div><div class="calc-option-desc">Trebam profesionalan brend od nule</div></div>
-          </button>
-          <button type="button" class="calc-option" onclick="selectOption(this,'need','ads')">
-            <div class="calc-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
-            <div class="calc-option-content"><div class="calc-option-title">Meta reklame</div><div class="calc-option-desc">Trebam oglase za Facebook/Instagram</div></div>
-          </button>
-          <button type="button" class="calc-option" onclick="selectOption(this,'need','both')">
-            <div class="calc-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-            <div class="calc-option-content"><div class="calc-option-title">I jedno i drugo</div><div class="calc-option-desc">Trebam kompletan paket</div></div>
-          </button>
-        </div>
-      </div>
-
-      <div class="calc-step" data-step="2">
-        <h3 class="calc-question">Koji je tvoj budžet?</h3>
-        <p class="calc-subtitle">Bez obaveza — samo da ti predložimo nešto realno</p>
-        <div class="calc-options">
-          <button type="button" class="calc-option" onclick="selectOption(this,'budget','low')">
-            <div class="calc-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-            <div class="calc-option-content"><div class="calc-option-title">Do 89€</div><div class="calc-option-desc">Tek krećem, mali budžet</div></div>
-          </button>
-          <button type="button" class="calc-option" onclick="selectOption(this,'budget','mid')">
-            <div class="calc-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg></div>
-            <div class="calc-option-content"><div class="calc-option-title">89€ — 250€</div><div class="calc-option-desc">Spreman za vrhunski vizual</div></div>
-          </button>
-          <button type="button" class="calc-option" onclick="selectOption(this,'budget','high')">
-            <div class="calc-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 3 18 3 22 9 12 22 2 9 6 3"/></svg></div>
-            <div class="calc-option-content"><div class="calc-option-title">250€ +</div><div class="calc-option-desc">Hoću kompletan brend</div></div>
-          </button>
-        </div>
-      </div>
-
-      <div class="calc-step" data-step="3">
-        <h3 class="calc-question">Koliko ti je hitno?</h3>
-        <p class="calc-subtitle">Ovo nam pomaže da rezervišemo vreme</p>
-        <div class="calc-options">
-          <button type="button" class="calc-option" onclick="selectOption(this,'urgency','urgent')">
-            <div class="calc-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-            <div class="calc-option-content"><div class="calc-option-title">Hitno — 1-3 dana</div><div class="calc-option-desc">Imam akciju ili neodložno nešto</div></div>
-          </button>
-          <button type="button" class="calc-option" onclick="selectOption(this,'urgency','normal')">
-            <div class="calc-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-            <div class="calc-option-content"><div class="calc-option-title">Standardno — nedelju dana</div><div class="calc-option-desc">Spreman sam da sačekam za kvalitet</div></div>
-          </button>
-          <button type="button" class="calc-option" onclick="selectOption(this,'urgency','flexible')">
-            <div class="calc-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-            <div class="calc-option-content"><div class="calc-option-title">Nije hitno</div><div class="calc-option-desc">Hoću da uradim kompletno i polako</div></div>
-          </button>
-        </div>
-      </div>
-
-      <div class="calc-step" data-step="4">
-        <div class="calc-result">
-          <div class="calc-result-label">Tvoj idealan paket</div>
-          <div class="calc-result-package" id="resultPackage">Standard</div>
-          <div class="calc-result-price" id="resultPrice">80<span>€</span></div>
-          <p class="calc-result-desc" id="resultDesc"></p>
-          <div class="calc-result-features">
-            <h4>Šta dobijaš u ovom paketu:</h4>
-            <ul id="resultFeatures"></ul>
+        <!-- KORAK 1: Kategorije -->
+        <div class="calc2-block">
+          <div class="calc2-step-label">1 — Šta ti treba?</div>
+          <div class="calc2-cats">
+            <label class="calc2-cat">
+              <input type="checkbox" id="cat-logo" onchange="calc2Update()">
+              <span class="calc2-cat-box">
+                <span class="calc2-cat-name">Logo</span>
+                <span class="calc2-cat-desc">Samostalan logo dizajn</span>
+              </span>
+            </label>
+            <label class="calc2-cat">
+              <input type="checkbox" id="cat-branding" onchange="calc2Update()">
+              <span class="calc2-cat-box">
+                <span class="calc2-cat-name">Branding</span>
+                <span class="calc2-cat-desc">Vizuelni identitet i materijali</span>
+              </span>
+            </label>
+            <label class="calc2-cat">
+              <input type="checkbox" id="cat-meta" onchange="calc2Update()">
+              <span class="calc2-cat-box">
+                <span class="calc2-cat-name">Meta Ads</span>
+                <span class="calc2-cat-desc">Kreative za reklame</span>
+              </span>
+            </label>
           </div>
-          <div class="calc-actions">
-            <button type="button" class="calc-restart" onclick="restartCalc()">↺ Probaj ponovo</button>
-            <a href="#" class="calc-cta-wa btn-magnetic" id="resultWaLink" target="_blank" rel="noopener">Naruči na WhatsApp</a>
+        </div>
+
+        <!-- LOGO sekcija -->
+        <div class="calc2-block calc2-section" id="sec-logo" hidden>
+          <div class="calc2-step-label">Logo opcije</div>
+          <div class="calc2-row">
+            <span class="calc2-row-label">Broj koncepata</span>
+            <div class="calc2-segmented" id="logo-concepts">
+              <button type="button" class="active" data-val="1" onclick="calc2Seg(this,'logoConcepts',1)">1</button>
+              <button type="button" data-val="3" onclick="calc2Seg(this,'logoConcepts',3)">3</button>
+              <button type="button" data-val="5" onclick="calc2Seg(this,'logoConcepts',5)">5</button>
+            </div>
           </div>
+          <div class="calc2-row">
+            <span class="calc2-row-label">Nivo dizajna</span>
+            <div class="calc2-segmented" id="logo-level">
+              <button type="button" class="active" data-val="std" onclick="calc2Seg(this,'logoLevel','std')">Standard</button>
+              <button type="button" data-val="prem" onclick="calc2Seg(this,'logoLevel','prem')">Premium</button>
+            </div>
+          </div>
+          <div class="calc2-row">
+            <span class="calc2-row-label">Revizije</span>
+            <div class="calc2-segmented" id="logo-rev">
+              <button type="button" class="active" data-val="2" onclick="calc2Seg(this,'logoRev',2)">2</button>
+              <button type="button" data-val="5" onclick="calc2Seg(this,'logoRev',5)">5</button>
+              <button type="button" data-val="unl" onclick="calc2Seg(this,'logoRev','unl')">Neogr.</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BRANDING sekcija -->
+        <div class="calc2-block calc2-section" id="sec-branding" hidden>
+          <div class="calc2-step-label">Branding nivo</div>
+          <div class="calc2-levels" id="brand-level">
+            <button type="button" class="calc2-level active" data-val="1" onclick="calc2Seg(this,'brandLevel',1)">
+              <span class="calc2-level-name">Logo+</span>
+              <span class="calc2-level-price">70€</span>
+              <span class="calc2-level-desc">Logo + paleta + font + svi fajlovi</span>
+            </button>
+            <button type="button" class="calc2-level" data-val="2" onclick="calc2Seg(this,'brandLevel',2)">
+              <span class="calc2-level-name">Identitet</span>
+              <span class="calc2-level-price">240€</span>
+              <span class="calc2-level-desc">+ cover/profil/banner, highlight ikone, 3 šablona</span>
+            </button>
+            <button type="button" class="calc2-level" data-val="3" onclick="calc2Seg(this,'brandLevel',3)">
+              <span class="calc2-level-name">Pun brend</span>
+              <span class="calc2-level-price">590€</span>
+              <span class="calc2-level-desc">+ brand book + osnovni štampani materijali</span>
+            </button>
+          </div>
+          <div class="calc2-step-label" style="margin-top:1.5rem;">Dodaci</div>
+          <div class="calc2-addons">
+            <label class="calc2-addon">
+              <input type="checkbox" id="add-vizit" onchange="calc2Update()">
+              <span>Vizit karta <em>+25€</em></span>
+            </label>
+            <label class="calc2-addon">
+              <input type="checkbox" id="add-memo" onchange="calc2Update()">
+              <span>Memorandum <em>+20€</em></span>
+            </label>
+            <label class="calc2-addon">
+              <input type="checkbox" id="add-stampa" onchange="calc2Update()">
+              <span>Priprema za štampu (CMYK) <em>+35€</em></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- META ADS sekcija -->
+        <div class="calc2-block calc2-section" id="sec-meta" hidden>
+          <div class="calc2-step-label">Meta Ads kreative</div>
+          <div class="calc2-row">
+            <span class="calc2-row-label">Nivo</span>
+            <div class="calc2-segmented" id="meta-level">
+              <button type="button" class="active" data-val="std" onclick="calc2Seg(this,'metaLevel','std')">Standard 15€</button>
+              <button type="button" data-val="prem" onclick="calc2Seg(this,'metaLevel','prem')">Premium 30€</button>
+            </div>
+          </div>
+          <p class="calc2-hint" id="meta-hint">Standard: ti šalješ gotov naslov, CTA i koncept — mi dizajniramo.</p>
+          <div class="calc2-row calc2-row-slider">
+            <span class="calc2-row-label">Broj kreativa: <strong id="meta-count">1</strong></span>
+            <input type="range" min="1" max="10" value="1" id="meta-slider" class="calc2-slider" oninput="calc2Update()">
+            <div class="calc2-slider-scale"><span>1</span><span>5</span><span>10+</span></div>
+          </div>
+          <p class="calc2-hint">Story verzija (1080×1920) je uključena u svaku kreativu. Veće količine — bolja cena po komadu.</p>
+        </div>
+
+      </div>
+
+      <!-- DESNA STRANA: rezultat (sticky) -->
+      <div class="calc2-result">
+        <div class="calc2-result-inner">
+          <div class="calc2-result-label">Procenjena cena</div>
+          <div class="calc2-result-price" id="calc2-price">—</div>
+          <div class="calc2-result-note" id="calc2-note">Izaberi bar jednu uslugu da vidiš cenu.</div>
+
+          <ul class="calc2-breakdown" id="calc2-breakdown"></ul>
+
+          <a href="#" class="btn btn-primary calc2-cta" id="calc2-wa" target="_blank" rel="noopener" hidden>Pošalji upit na WhatsApp →</a>
+          <button type="button" class="calc2-reset" onclick="calc2Reset()" hidden id="calc2-reset-btn">↺ Resetuj</button>
+
+          <p class="calc2-disclaimer">Cena je orijentaciona. Finalnu ponudu dogovaramo u razgovoru, prema konkretnim potrebama.</p>
         </div>
       </div>
     </div>
