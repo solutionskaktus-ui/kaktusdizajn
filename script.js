@@ -323,8 +323,9 @@ document.addEventListener('DOMContentLoaded', () => {
     levelMult: { 'std': 1.0, 'prem': 1.35 },
     brand: { 1: 70, 2: 240, 3: 590 },
     brandNames: { 1: 'Branding — Logo+', 2: 'Branding — Identitet', 3: 'Branding — Pun brend' },
-    addons: { vizit: 25, memo: 20, uniforme: 40, stampa: 15 },
-    addonNames: { vizit: 'Vizit karta', memo: 'Memorandum', uniforme: 'Uniforme / radna odeća', stampa: 'Priprema za štampu' },
+    addons: { vizit: 25, memo: 20, koverat: 18, flajer: 30, brosura: 45, rollup: 35, plakat: 28, nalepnice: 22, ambalaza: 55, uniforme: 40, jelovnik: 35, stampa: 15 },
+    addonNames: { vizit: 'Vizit karta', memo: 'Memorandum', koverat: 'Koverat', flajer: 'Flajer / letak', brosura: 'Brošura / katalog', rollup: 'Roll-up baner', plakat: 'Plakat / poster', nalepnice: 'Nalepnice / etikete', ambalaza: 'Ambalaža', uniforme: 'Uniforme / radna odeća', jelovnik: 'Jelovnik / cenovnik', stampa: 'Priprema za štampu' },
+    fullBrandFree: ['vizit','memo','stampa','flajer','uniforme'],  // auto-besplatni u Pun brendu
     metaBase: { 'std': 15, 'prem': 30 }
   };
 
@@ -397,28 +398,53 @@ document.addEventListener('DOMContentLoaded', () => {
       breakdown.push({ label: PRICES.brandNames[state.brandLevel], price: brand });
       total += brand;
 
-      // Ako je Pun brend (nivo 3) — dodaci su uključeni, checkboxovi disabled
       const isFullBrand = (state.brandLevel === 3);
       const addonsNote = document.getElementById('brand-addons-note');
       if (addonsNote) addonsNote.hidden = !isFullBrand;
 
-      ['vizit','memo','uniforme','stampa'].forEach(a => {
+      const allAddons = ['vizit','memo','koverat','flajer','brosura','rollup','plakat','nalepnice','ambalaza','uniforme','jelovnik','stampa'];
+      const freeSet = PRICES.fullBrandFree;  // auto-besplatni u Pun brendu
+
+      // Pronađi koji je "prvi po izboru gratis" (prvi čekiran koji NIJE auto-besplatan)
+      let firstChosenFree = null;
+      if (isFullBrand) {
+        for (const a of allAddons) {
+          if (freeSet.includes(a)) continue;
+          const cb = document.getElementById('add-'+a);
+          if (cb && cb.checked) { firstChosenFree = a; break; }
+        }
+      }
+
+      allAddons.forEach(a => {
         const cb = document.getElementById('add-'+a);
         if (!cb) return;
-        const wrapper = cb.closest('.calc2-addon');
-        if (isFullBrand) {
-          // Uključeno u paket — onemogući i prikaži kao deo paketa
+        const wrapper = cb.closest('.calc2-chip');
+
+        if (isFullBrand && freeSet.includes(a)) {
+          // Auto-besplatan, onemogućen
           cb.disabled = true;
-          if (wrapper) wrapper.classList.add('calc2-addon-included');
+          if (wrapper) { wrapper.classList.add('calc2-chip-included'); wrapper.classList.remove('calc2-chip-free'); }
           breakdown.push({ label: PRICES.addonNames[a], price: 0, included: true });
-        } else {
+        } else if (isFullBrand && a === firstChosenFree) {
+          // Prvi po izboru — gratis
           cb.disabled = false;
-          if (wrapper) wrapper.classList.remove('calc2-addon-included');
+          if (wrapper) { wrapper.classList.add('calc2-chip-free'); wrapper.classList.remove('calc2-chip-included'); }
+          breakdown.push({ label: PRICES.addonNames[a] + ' (gratis)', price: 0, included: true });
+        } else {
+          // Normalno se naplaćuje
+          cb.disabled = false;
+          if (wrapper) { wrapper.classList.remove('calc2-chip-included','calc2-chip-free'); }
           if (cb.checked) {
             total += PRICES.addons[a];
             breakdown.push({ label: PRICES.addonNames[a], price: PRICES.addons[a], sub: true });
           }
         }
+      });
+    } else {
+      // Nije branding — resetuj sve chip stilove i disabled
+      ['vizit','memo','koverat','flajer','brosura','rollup','plakat','nalepnice','ambalaza','uniforme','jelovnik','stampa'].forEach(a => {
+        const cb = document.getElementById('add-'+a);
+        if (cb) { cb.disabled = false; const w = cb.closest('.calc2-chip'); if (w) w.classList.remove('calc2-chip-included','calc2-chip-free'); }
       });
     }
 
@@ -504,9 +530,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Reset
   window.calc2Reset = function(){
-    ['cat-logo','cat-branding','cat-meta','add-vizit','add-memo','add-uniforme','add-stampa'].forEach(id => {
+    ['cat-logo','cat-branding','cat-meta','add-vizit','add-memo','add-koverat','add-flajer','add-brosura','add-rollup','add-plakat','add-nalepnice','add-ambalaza','add-uniforme','add-jelovnik','add-stampa'].forEach(id => {
       const el = document.getElementById(id); if (el) { el.checked = false; el.disabled = false; }
     });
+    document.querySelectorAll('.calc2-chip').forEach(c => c.classList.remove('calc2-chip-included','calc2-chip-free'));
     document.getElementById('meta-slider').value = 1;
     Object.assign(state, { logoConcepts:1, logoLevel:'std', logoRev:2, brandLevel:1, metaLevel:'std' });
     // Reset segmented dugmad
@@ -520,4 +547,22 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('calc2-price')) {
     calc2Update();
   }
+})();
+
+// =========================================================
+// HERO VIDEO — bira desktop ili mobilni izvor po širini ekrana
+// =========================================================
+(function(){
+  const v = document.querySelector('.hero-video');
+  if (!v) return;
+  const isDesktop = window.matchMedia('(min-width: 921px)').matches;
+  const webm = isDesktop ? v.dataset.desktopWebm : v.dataset.mobileWebm;
+  const mp4  = isDesktop ? v.dataset.desktopMp4  : v.dataset.mobileMp4;
+  if (!webm) return;
+  const sources = v.querySelectorAll('source');
+  if (sources[0]) sources[0].src = webm;
+  if (sources[1]) sources[1].src = mp4;
+  v.load();
+  // Pokušaj autoplay (neki browseri ga blokiraju dok se ne učita)
+  v.play().catch(()=>{});
 })();

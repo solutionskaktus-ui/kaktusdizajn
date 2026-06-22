@@ -16,7 +16,7 @@
 
 
 <!-- PRIMARY META -->
-<title>Kaktus Dizajn — Vrhunski Grafički Dizajn, Logo i Brending u Srbiji</title>
+<title>Kaktus Dizajn | Vrhunski Grafički Dizajn, Logo i Brending u Srbiji</title>
 <meta name="description" content="Studio za grafički dizajn iz Beograda. Logo od 89€, brending paketi, Meta reklame od 30€. 100+ projekata, 5★ ocena, isporuka 48h.">
 <meta name="keywords" content="grafički dizajn srbija, logo dizajn beograd, brending srbija, dizajner za male biznise, meta reklame, instagram reklame srbija, kaktus dizajn, vizuelni identitet, cena loga">
 <meta name="author" content="Kaktus Dizajn">
@@ -37,14 +37,14 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sr_RS">
 <meta property="og:site_name" content="Kaktus Dizajn">
-<meta property="og:title" content="Kaktus Dizajn — Vrhunski Grafički Dizajn u Srbiji">
+<meta property="og:title" content="Kaktus Dizajn | Vrhunski Grafički Dizajn u Srbiji">
 <meta property="og:description" content="Logo dizajn, brending i Meta reklame za male biznise. Od 30€. Isporuka 48h. 100+ projekata.">
 <meta property="og:url" content="https://kaktusdizajn.com/">
 <meta property="og:image" content="https://kaktusdizajn.com/logo.png">
 
 <!-- TWITTER -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kaktus Dizajn — Vrhunski Grafički Dizajn u Srbiji">
+<meta name="twitter:title" content="Kaktus Dizajn | Vrhunski Grafički Dizajn u Srbiji">
 <meta name="twitter:description" content="Logo, brending i Meta reklame od 30€. Isporuka 48h.">
 <meta name="twitter:image" content="https://kaktusdizajn.com/logo.png">
 
@@ -197,7 +197,9 @@
 <!-- HERO -->
 <section class="hero">
   <!-- Video pozadina (loop, bez zvuka) -->
-  <video class="hero-video" autoplay muted loop playsinline poster="hero-poster.jpg" aria-hidden="true">
+  <video class="hero-video" autoplay muted loop playsinline poster="hero-poster.jpg" aria-hidden="true"
+         data-mobile-webm="hero-bg.webm" data-mobile-mp4="hero-bg.mp4"
+         data-desktop-webm="hero-bg-desktop.webm" data-desktop-mp4="hero-bg-desktop.mp4">
     <source src="hero-bg.webm" type="video/webm">
     <source src="hero-bg.mp4" type="video/mp4">
   </video>
@@ -257,7 +259,7 @@
   <div class="container">
     <div class="reveal u-text-center u-mb-3">
       <div class="section-label">Kalkulator cene</div>
-      <h2>Izračunaj <span class="accent">svoju ponudu</span>.</h2>
+      <h2>Kalkulator <span class="accent">cena</span>.</h2>
       <p class="lead u-narrow-560 u-mt-1">
         Izaberi šta ti treba i odmah vidiš okvirnu cenu. Bez obaveza.
       </p>
@@ -343,25 +345,21 @@
               <span class="calc2-level-desc">+ brand book + osnovni štampani materijali</span>
             </button>
           </div>
-          <div class="calc2-step-label" style="margin-top:1.5rem;">Dodaci</div>
-          <p class="calc2-hint" id="brand-addons-note" hidden>Uključeni u paket „Pun brend".</p>
-          <div class="calc2-addons">
-            <label class="calc2-addon">
-              <input type="checkbox" id="add-vizit" onchange="calc2Update()">
-              <span>Vizit karta <em>+25€</em></span>
-            </label>
-            <label class="calc2-addon">
-              <input type="checkbox" id="add-memo" onchange="calc2Update()">
-              <span>Memorandum <em>+20€</em></span>
-            </label>
-            <label class="calc2-addon">
-              <input type="checkbox" id="add-uniforme" onchange="calc2Update()">
-              <span>Uniforme / radna odeća <em>+40€</em></span>
-            </label>
-            <label class="calc2-addon">
-              <input type="checkbox" id="add-stampa" onchange="calc2Update()">
-              <span>Priprema za štampu (CMYK) <em>+15€</em></span>
-            </label>
+          <div class="calc2-step-label" style="margin-top:1.5rem;">Propratni materijali</div>
+          <p class="calc2-hint" id="brand-addons-note" hidden>Uz „Pun brend": vizit karta, memorandum, štampa, flajer i uniforme su uključeni — plus jedan dodatak po izboru gratis.</p>
+          <div class="calc2-chips">
+            <label class="calc2-chip"><input type="checkbox" id="add-vizit" onchange="calc2Update()"><span>Vizit karta <em>+25€</em></span></label>
+            <label class="calc2-chip"><input type="checkbox" id="add-memo" onchange="calc2Update()"><span>Memorandum <em>+20€</em></span></label>
+            <label class="calc2-chip"><input type="checkbox" id="add-koverat" onchange="calc2Update()"><span>Koverat <em>+18€</em></span></label>
+            <label class="calc2-chip"><input type="checkbox" id="add-flajer" onchange="calc2Update()"><span>Flajer / letak <em>+30€</em></span></label>
+            <label class="calc2-chip"><input type="checkbox" id="add-brosura" onchange="calc2Update()"><span>Brošura / katalog <em>+45€</em></span></label>
+            <label class="calc2-chip"><input type="checkbox" id="add-rollup" onchange="calc2Update()"><span>Roll-up baner <em>+35€</em></span></label>
+            <label class="calc2-chip"><input type="checkbox" id="add-plakat" onchange="calc2Update()"><span>Plakat / poster <em>+28€</em></span></label>
+            <label class="calc2-chip"><input type="checkbox" id="add-nalepnice" onchange="calc2Update()"><span>Nalepnice / etikete <em>+22€</em></span></label>
+            <label class="calc2-chip"><input type="checkbox" id="add-ambalaza" onchange="calc2Update()"><span>Ambalaža (kutija / kesa) <em>+55€</em></span></label>
+            <label class="calc2-chip"><input type="checkbox" id="add-uniforme" onchange="calc2Update()"><span>Uniforme / radna odeća <em>+40€</em></span></label>
+            <label class="calc2-chip"><input type="checkbox" id="add-jelovnik" onchange="calc2Update()"><span>Jelovnik / cenovnik <em>+35€</em></span></label>
+            <label class="calc2-chip"><input type="checkbox" id="add-stampa" onchange="calc2Update()"><span>Priprema za štampu <em>+15€</em></span></label>
           </div>
         </div>
 
