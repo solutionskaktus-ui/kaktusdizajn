@@ -281,10 +281,12 @@ section { padding-block: var(--section-pad); position: relative; }
 }
 .hero h1 {
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
   font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.05;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  text-align: left;
   margin-bottom: 1.5rem;
   /* Fallback: tekst je odmah vidljiv punim bojama */
   color: var(--text);
@@ -1020,19 +1022,25 @@ html.has-cursor, html.has-cursor body { cursor: none; }
 
 /* ---- Hero grid: 2 kolone na desktopu (tekst + kaktus) ---- */
 @media(min-width:921px){
-  .hero .hero-grid{grid-template-columns:1.05fr 0.95fr;align-items:center}
-  .hero-grid > div:first-child{order:0}
-  .hero-3d{order:0}
+  .hero .hero-grid{grid-template-columns:1fr;align-items:start}
+  .hero h1{font-size:clamp(2rem,3.5vw,3.2rem);max-width:18ch}
+  .hero .lead{max-width:60ch}
 }
 @media(max-width:920px){
-  /* Mobile-first: kaktus GORE, pa tekst (vertikalni tok za palac) */
-  .hero-grid > div:first-child{order:2}
-  .hero-3d{order:1;height:auto;margin:0 0 1.5rem;text-align:center}
-  .hero-cactus-img{max-width:min(42vw,160px)}
-  .hero h1{text-align:center}
-  .hero-badge{margin-left:auto;margin-right:auto}
-  .hero .lead{text-align:center}
-  .hero-actions{justify-content:center}
+  /* Mobile-first hero: headline gore-levo, tekst i dugmad pri dnu */
+  .hero { min-height: 92vh; display: flex; align-items: stretch; }
+  .hero .container { display: flex; flex-direction: column; width: 100%; }
+  .hero-grid { display: flex; flex-direction: column; flex: 1; gap: 0; }
+  .hero-grid > div:first-child { display: flex; flex-direction: column; flex: 1; }
+  .hero h1 { text-align: left; margin-top: 0.5rem; }
+  .hero .lead {
+    text-align: left;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-top: auto;  /* gura tekst skroz dole */
+    max-width: 100%;
+  }
+  .hero-actions { justify-content: flex-start; margin-top: 1.25rem; }
 }
 
 /* ---- Magnetic dugmići ---- */
@@ -1909,9 +1917,6 @@ html.has-cursor, html.has-cursor body { cursor: none; }
 }
 .mobile-cta-bar a:active { transform: scale(0.97); }
 @media (max-width: 768px) {
-  .mobile-cta-bar { display: block; }
-  /* Razmak na dnu body-ja da sticky bar ne prekrije footer sadržaj */
-  body { padding-bottom: 4.5rem; }
 }
 
 /* #12 — Tap mikro-animacije (haptic-style) na sve dugmiće */
