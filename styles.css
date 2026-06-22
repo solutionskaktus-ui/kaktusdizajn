@@ -1021,9 +1021,18 @@ html.has-cursor, html.has-cursor body { cursor: none; }
 /* ---- Hero grid: 2 kolone na desktopu (tekst + kaktus) ---- */
 @media(min-width:921px){
   .hero .hero-grid{grid-template-columns:1.05fr 0.95fr;align-items:center}
+  .hero-grid > div:first-child{order:0}
+  .hero-3d{order:0}
 }
 @media(max-width:920px){
-  .hero-3d{height:300px;margin-top:1rem}
+  /* Mobile-first: kaktus GORE, pa tekst (vertikalni tok za palac) */
+  .hero-grid > div:first-child{order:2}
+  .hero-3d{order:1;height:auto;margin:0 0 1.5rem;text-align:center}
+  .hero-cactus-img{max-width:min(42vw,160px)}
+  .hero h1{text-align:center}
+  .hero-badge{margin-left:auto;margin-right:auto}
+  .hero .lead{text-align:center}
+  .hero-actions{justify-content:center}
 }
 
 /* ---- Magnetic dugmići ---- */
@@ -1833,3 +1842,88 @@ html.has-cursor, html.has-cursor body { cursor: none; }
 .calc2-addon-included span::after { content: ' ✓ uklj.'; color: var(--green); font-size: 0.72rem; font-style: italic; }
 .calc2-addon-included em { display: none; }
 .calc2-bd-incl span:last-child { color: var(--green) !important; font-style: italic; }
+
+/* ============================================================
+   MOBILE-FIRST HERO — disanje, aurora, sticky CTA, tap feedback
+   ============================================================ */
+
+/* #1 — Disanje kaktusa (suptilno, posle reveal animacije) */
+@keyframes cactusBreathe {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.025); }
+}
+.hero-cactus-img {
+  animation: cactusReveal 1s cubic-bezier(0.16,1,0.3,1) 0.3s forwards,
+             cactusBreathe 6s ease-in-out 1.3s infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-cactus-img { animation: cactusReveal 1s ease 0.3s forwards; }
+}
+
+/* #3 — Pojačana aurora iza hero-a (gold/green, sporo plutanje) */
+.hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -30% -20% auto -20%;
+  height: 140%;
+  z-index: -2;
+  background:
+    radial-gradient(45% 55% at 25% 25%, rgba(201,169,110,0.20), transparent 70%),
+    radial-gradient(40% 50% at 78% 30%, rgba(107,154,100,0.18), transparent 70%),
+    radial-gradient(50% 45% at 55% 80%, rgba(201,169,110,0.12), transparent 70%);
+  filter: blur(50px);
+  animation: heroAurora 20s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes heroAurora {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  50%  { transform: translate3d(4%,-3%,0) scale(1.1); }
+  100% { transform: translate3d(-3%,4%,0) scale(1.05); }
+}
+@media (prefers-reduced-motion: reduce) { .hero::before { animation: none; } }
+/* Na mobilnom: blaža aurora (manje blur = bolje performanse) */
+@media (max-width: 768px) {
+  .hero::before { filter: blur(35px); animation-duration: 28s; }
+}
+
+/* #7 — Sticky CTA na dnu (samo mobilni) */
+.mobile-cta-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 90;
+  display: none;
+  padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+  background: linear-gradient(to top, var(--bg) 70%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.mobile-cta-bar a {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 0.95rem;
+  background: var(--gold); color: #1a1a1a;
+  font-family: var(--font-body); font-weight: 700; font-size: 1rem;
+  border-radius: 14px; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(201,169,110,0.3);
+  transition: transform 0.15s ease;
+}
+.mobile-cta-bar a:active { transform: scale(0.97); }
+@media (max-width: 768px) {
+  .mobile-cta-bar { display: block; }
+  /* Razmak na dnu body-ja da sticky bar ne prekrije footer sadržaj */
+  body { padding-bottom: 4.5rem; }
+}
+
+/* #12 — Tap mikro-animacije (haptic-style) na sve dugmiće */
+.btn, .nav-cta, .calc2-cta, .calc2-segmented button, .calc2-level {
+  transition: transform 0.15s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s, background 0.2s, border-color 0.2s;
+}
+.btn:active, .nav-cta:active, .calc2-cta:active {
+  transform: scale(0.97);
+}
+@media (hover: none) {
+  /* Na touch: jači tap feedback */
+  .btn:active, .calc2-cat:active .calc2-cat-box, .calc2-level:active {
+    transform: scale(0.96);
+  }
+}

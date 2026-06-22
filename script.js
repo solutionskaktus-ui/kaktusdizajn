@@ -253,14 +253,11 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 // =========================================================
-// INTERAKTIVNI HERO KAKTUS — prati miš (parallax tilt)
+// INTERAKTIVNI HERO KAKTUS — tilt na miš (desktop) i dodir (mobilni)
 // =========================================================
 (function(){
   const hero3d = document.querySelector('.hero-3d');
   if (!hero3d) return;
-
-  // Samo na desktopu (touch nema miša)
-  if (window.matchMedia('(hover: none)').matches) return;
 
   let targetRotX = 0, targetRotY = 0;
   let curRotX = 0, curRotY = 0;
@@ -269,31 +266,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroSection = document.querySelector('.hero');
   if (!heroSection) return;
 
-  heroSection.addEventListener('mousemove', (e) => {
+  function setTilt(clientX, clientY){
     const rect = heroSection.getBoundingClientRect();
-    // Pozicija miša relativno na centar hero sekcije (-1 do 1)
-    const px = (e.clientX - rect.left) / rect.width - 0.5;
-    const py = (e.clientY - rect.top) / rect.height - 0.5;
-    // Blagi tilt — max 12deg
+    const px = (clientX - rect.left) / rect.width - 0.5;
+    const py = (clientY - rect.top) / rect.height - 0.5;
     targetRotY = px * 24;
     targetRotX = -py * 16;
     if (!rafId) animate();
-  });
-
-  heroSection.addEventListener('mouseleave', () => {
-    targetRotX = 0;
-    targetRotY = 0;
+  }
+  function resetTilt(){
+    targetRotX = 0; targetRotY = 0;
     if (!rafId) animate();
-  });
+  }
+
+  // Desktop: prati miš
+  heroSection.addEventListener('mousemove', (e) => setTilt(e.clientX, e.clientY));
+  heroSection.addEventListener('mouseleave', resetTilt);
+
+  // Mobilni: reaguje na dodir/prevlačenje (#10)
+  heroSection.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches[0]) {
+      setTilt(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+  heroSection.addEventListener('touchend', resetTilt);
 
   function animate(){
-    // Lerp ka cilju (smooth)
     curRotX += (targetRotX - curRotX) * 0.08;
     curRotY += (targetRotY - curRotY) * 0.08;
-
     hero3d.style.transform = `perspective(1000px) rotateX(${curRotX.toFixed(2)}deg) rotateY(${curRotY.toFixed(2)}deg)`;
-
-    // Nastavi dok se ne smiri
     if (Math.abs(targetRotX - curRotX) > 0.05 || Math.abs(targetRotY - curRotY) > 0.05) {
       rafId = requestAnimationFrame(animate);
     } else {
