@@ -129,7 +129,7 @@
       "review": [
         { "@type": "Review", "author": { "@type": "Person", "name": "Uros Pilipovic" }, "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Odlična saradnja, kvalitet na nivou i isporučeno u dogovoreno vreme. Sve preporuke." },
         { "@type": "Review", "author": { "@type": "Person", "name": "Luka Milovanović" }, "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Najjači dizajn ubedljivo." },
-        { "@type": "Review", "author": { "@type": "Person", "name": "Rema" }, "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Izuzetno zadovoljan saradnjom — odličan dizajn i profesionalnost." }
+        { "@type": "Review", "author": { "@type": "Person", "name": "Rema" }, "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Izuzetno zadovoljan saradnjom - odličan dizajn i profesionalnost." }
       ]
     },
     {
@@ -170,7 +170,7 @@
 <!-- HEADER -->
 <header class="site-header">
   <div class="container nav">
-    <a href="/" class="nav-brand" aria-label="Kaktus Dizajn — početna">
+    <a href="/" class="nav-brand" aria-label="Kaktus Dizajn - početna">
       <img src="logo.png" alt="Kaktus Dizajn logo" width="22" height="22">
       <span>Kaktus Dizajn</span>
     </a>
@@ -259,8 +259,8 @@
   <div class="container">
     <div class="reveal u-text-center u-mb-3">
       <div class="section-label">Kalkulator cene</div>
-      <h2>Kalkulator <span class="accent">cena</span>.</h2>
-      <p class="lead u-narrow-560 u-mt-1">
+      <h2 class="calc2-title">Kalkulator <span class="accent">cena</span>.</h2>
+      <p class="lead calc2-subtitle">
         Izaberi šta ti treba i odmah vidiš okvirnu cenu. Bez obaveza.
       </p>
     </div>
@@ -269,9 +269,16 @@
       <!-- LEVA STRANA: izbori -->
       <div class="calc2-form">
 
+        <!-- Wizard step indikator -->
+        <div class="calc2-steps" id="calc2-steps" hidden>
+          <span class="calc2-step-dot active" data-step="0">1</span>
+          <span class="calc2-step-line"></span>
+          <span class="calc2-step-dot" data-step="1">2</span>
+        </div>
+
         <!-- KORAK 1: Kategorije -->
-        <div class="calc2-block">
-          <div class="calc2-step-label">1 — Šta ti treba?</div>
+        <div class="calc2-block" data-wizard="0">
+          <div class="calc2-step-label calc2-step-main">1. Šta ti treba?</div>
           <div class="calc2-cats">
             <label class="calc2-cat">
               <input type="checkbox" id="cat-logo" onchange="calc2Update()">
@@ -298,7 +305,7 @@
         </div>
 
         <!-- LOGO sekcija -->
-        <div class="calc2-block calc2-section" id="sec-logo" hidden>
+        <div class="calc2-block calc2-section" id="sec-logo" data-wizard="1" hidden>
           <div class="calc2-step-label">Logo opcije</div>
           <div class="calc2-row">
             <span class="calc2-row-label">Broj koncepata</span>
@@ -326,7 +333,7 @@
         </div>
 
         <!-- BRANDING sekcija -->
-        <div class="calc2-block calc2-section" id="sec-branding" hidden>
+        <div class="calc2-block calc2-section" id="sec-branding" data-wizard="1" hidden>
           <div class="calc2-step-label">Branding nivo</div>
           <div class="calc2-levels" id="brand-level">
             <button type="button" class="calc2-level active" data-val="1" onclick="calc2Seg(this,'brandLevel',1)">
@@ -346,7 +353,7 @@
             </button>
           </div>
           <div class="calc2-step-label" style="margin-top:1.5rem;">Propratni materijali</div>
-          <p class="calc2-hint" id="brand-addons-note" hidden>Uz „Pun brend": vizit karta, memorandum, štampa, flajer i uniforme su uključeni — plus jedan dodatak po izboru gratis.</p>
+          <p class="calc2-hint" id="brand-addons-note" hidden>Uz „Pun brend": vizit karta, memorandum, štampa, flajer i uniforme su uključeni - plus jedan dodatak po izboru gratis.</p>
           <div class="calc2-chips">
             <label class="calc2-chip"><input type="checkbox" id="add-vizit" onchange="calc2Update()"><span>Vizit karta <em>+25€</em></span></label>
             <label class="calc2-chip"><input type="checkbox" id="add-memo" onchange="calc2Update()"><span>Memorandum <em>+20€</em></span></label>
@@ -364,7 +371,7 @@
         </div>
 
         <!-- META ADS sekcija -->
-        <div class="calc2-block calc2-section" id="sec-meta" hidden>
+        <div class="calc2-block calc2-section" id="sec-meta" data-wizard="1" hidden>
           <div class="calc2-step-label">Meta Ads kreative</div>
           <div class="calc2-row">
             <span class="calc2-row-label">Nivo</span>
@@ -373,7 +380,7 @@
               <button type="button" data-val="prem" onclick="calc2Seg(this,'metaLevel','prem')">Premium 30€</button>
             </div>
           </div>
-          <p class="calc2-hint" id="meta-hint">Standard: ti šalješ gotov naslov, CTA i koncept — mi dizajniramo.</p>
+          <p class="calc2-hint" id="meta-hint">Standard: ti šalješ gotov naslov, CTA i koncept - mi dizajniramo.</p>
           <div class="calc2-row calc2-row-slider">
             <span class="calc2-row-label">Broj kreativa: <strong id="meta-count">1</strong></span>
             <input type="range" min="1" max="10" value="1" id="meta-slider" class="calc2-slider" oninput="calc2Update()">
@@ -383,23 +390,35 @@
               <input type="number" min="10" max="200" value="10" id="meta-custom-input" class="calc2-num" oninput="calc2Update()">
             </div>
           </div>
-          <p class="calc2-hint">Story verzija (1080×1920) je uključena u svaku kreativu. Veće količine — bolja cena po komadu.</p>
+          <p class="calc2-hint">Story verzija (1080×1920) je uključena u svaku kreativu. Veće količine - bolja cena po komadu.</p>
+        </div>
+
+
+        <!-- Wizard navigacija -->
+        <div class="calc2-nav" id="calc2-nav">
+          <button type="button" class="calc2-nav-back" id="calc2-back" onclick="calc2Step(-1)" hidden>← Nazad</button>
+          <button type="button" class="calc2-nav-next" id="calc2-next" onclick="calc2Step(1)" disabled>Dalje →</button>
         </div>
 
       </div>
 
-      <!-- DESNA STRANA: rezultat (sticky) -->
-      <div class="calc2-result">
-        <div class="calc2-result-inner">
-          <div class="calc2-result-label">Procenjena cena</div>
-          <div class="calc2-result-price" id="calc2-price">—</div>
+      <!-- STICKY FOOTER: cena + dugme (dole) -->
+      <div class="calc2-sticky" id="calc2-sticky" hidden>
+        <div class="calc2-sticky-inner">
+          <div class="calc2-sticky-price">
+            <span class="calc2-sticky-label">Procenjena cena</span>
+            <span class="calc2-result-price" id="calc2-price">-</span>
+          </div>
+          <div class="calc2-sticky-actions">
+            <button type="button" class="calc2-sticky-detail" id="calc2-detail-btn" onclick="calc2ToggleDetail()" hidden>Detalji</button>
+            <a href="#" class="btn btn-primary calc2-cta" id="calc2-wa" target="_blank" rel="noopener" hidden>Pošalji upit →</a>
+          </div>
+        </div>
+        <!-- Razlaganje (sklopivo) -->
+        <div class="calc2-detail-panel" id="calc2-detail-panel" hidden>
           <div class="calc2-result-note" id="calc2-note">Izaberi bar jednu uslugu da vidiš cenu.</div>
-
           <ul class="calc2-breakdown" id="calc2-breakdown"></ul>
-
-          <a href="#" class="btn btn-primary calc2-cta" id="calc2-wa" target="_blank" rel="noopener" hidden>Pošalji upit na WhatsApp →</a>
           <button type="button" class="calc2-reset" onclick="calc2Reset()" hidden id="calc2-reset-btn">↺ Resetuj</button>
-
           <p class="calc2-disclaimer">Cena je orijentaciona. Finalnu ponudu dogovaramo u razgovoru, prema konkretnim potrebama.</p>
         </div>
       </div>
@@ -410,14 +429,14 @@
 <!-- MARQUEE -->
 <section class="marquee" aria-label="Pregled radova">
   <div class="marquee-track">
-    <img src="marquee-1.jpg" alt="EuroFreight — Meta ads dizajn" loading="lazy" width="280" height="280">
-    <img src="marquee-2.jpg" alt="Hausbrandt — Instagram dizajn" loading="lazy" width="280" height="280">
-    <img src="marquee-3.jpg" alt="$0 Down — Meta kampanja" loading="lazy" width="280" height="280">
-    <img src="marquee-4.jpg" alt="U Bloku — vizuelni identitet" loading="lazy" width="280" height="280">
-    <img src="marquee-5.jpg" alt="Sex on the Beach — brending" loading="lazy" width="280" height="280">
-    <img src="marquee-6.jpg" alt="Smarter Way — logo i brending" loading="lazy" width="280" height="280">
-    <img src="marquee-7.jpg" alt="Toxic kafeterija — kompletan brending" loading="lazy" width="280" height="280">
-    <img src="marquee-8.jpg" alt="Let The Wind — dizajn reklama" loading="lazy" width="280" height="280">
+    <img src="marquee-1.jpg" alt="EuroFreight - Meta ads dizajn" loading="lazy" width="280" height="280">
+    <img src="marquee-2.jpg" alt="Hausbrandt - Instagram dizajn" loading="lazy" width="280" height="280">
+    <img src="marquee-3.jpg" alt="$0 Down - Meta kampanja" loading="lazy" width="280" height="280">
+    <img src="marquee-4.jpg" alt="U Bloku - vizuelni identitet" loading="lazy" width="280" height="280">
+    <img src="marquee-5.jpg" alt="Sex on the Beach - brending" loading="lazy" width="280" height="280">
+    <img src="marquee-6.jpg" alt="Smarter Way - logo i brending" loading="lazy" width="280" height="280">
+    <img src="marquee-7.jpg" alt="Toxic kafeterija - kompletan brending" loading="lazy" width="280" height="280">
+    <img src="marquee-8.jpg" alt="Let The Wind - dizajn reklama" loading="lazy" width="280" height="280">
     <!-- Duplikat za beskonačnu petlju -->
     <img src="marquee-1.jpg" alt="" loading="lazy" width="280" height="280" aria-hidden="true">
     <img src="marquee-2.jpg" alt="" loading="lazy" width="280" height="280" aria-hidden="true">
@@ -436,21 +455,21 @@
     <div class="section-label">Šta radimo</div>
     <h2>Tri stvari, urađene<br>kako treba.</h2>
     <p class="lead u-mt-15">
-      Ne pravimo sve i svašta. Specijalizovani smo za tri usluge — i radimo ih bolje od proseka.
+      Ne pravimo sve i svašta. Specijalizovani smo za tri usluge - i radimo ih bolje od proseka.
     </p>
 
     <div class="services-grid">
       <article class="service-card">
         <div class="service-icon">L</div>
         <h3>Logo dizajn</h3>
-        <p>Prepoznatljiv zaštitni znak koji funkcioniše na svim formatima — od vizit karte do bilborda. Od 89€.</p>
+        <p>Prepoznatljiv zaštitni znak koji funkcioniše na svim formatima - od vizit karte do bilborda. Od 89€.</p>
         <a href="logo-dizajn.html" class="service-card-link">Saznaj više</a>
       </article>
 
       <article class="service-card">
         <div class="service-icon">B</div>
         <h3>Brending</h3>
-        <p>Kompletan vizuelni identitet — logo, boje, tipografija, brand book i materijali za štampu. Od 89€ do 850€.</p>
+        <p>Kompletan vizuelni identitet - logo, boje, tipografija, brand book i materijali za štampu. Od 89€ do 850€.</p>
         <a href="brending.html" class="service-card-link">Saznaj više</a>
       </article>
 
@@ -472,7 +491,7 @@
     <p class="lead u-mt-2 u-narrow-65ch">
       Već više od pet godina pravimo vrhunski vizuelni identitet i marketing materijal
       za biznise u Srbiji i regionu. Verujemo da svaki brend zaslužuje dizajn najvišeg
-      kvaliteta — bez agencijskih cena i kompromisa.
+      kvaliteta - bez agencijskih cena i kompromisa.
     </p>
     <p class="lead u-mt-1 u-narrow-65ch">
       Naš pristup je drugačiji: direktno radiš sa dizajnerom, cena se ne pomera,
@@ -517,7 +536,7 @@
 
       <article class="testimonial">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">Izuzetno zadovoljan saradnjom — odličan dizajn i profesionalnost.</p>
+        <p class="testimonial-text">Izuzetno zadovoljan saradnjom - odličan dizajn i profesionalnost.</p>
         <div class="testimonial-author">
           <div class="author-avatar">R</div>
           <div>
@@ -551,7 +570,7 @@
       <div class="process-step">
         <span class="step-number">02</span>
         <h3>Brief</h3>
-        <p>Šalješ materijale — boje, tekst, reference. Krećemo sa radom.</p>
+        <p>Šalješ materijale - boje, tekst, reference. Krećemo sa radom.</p>
       </div>
       <div class="process-step">
         <span class="step-number">03</span>
@@ -561,7 +580,7 @@
       <div class="process-step">
         <span class="step-number">04</span>
         <h3>Isporuka</h3>
-        <p>Dobijaš sve fajlove u potrebnim formatima — JPG, PNG, SVG, AI, PDF.</p>
+        <p>Dobijaš sve fajlove u potrebnim formatima - JPG, PNG, SVG, AI, PDF.</p>
       </div>
     </div>
   </div>
@@ -654,7 +673,7 @@
   <div class="container-narrow">
     <div class="section-label u-text-center">Spremni za saradnju?</div>
     <h2>Pošalji nam poruku i<br>dogovorimo besplatnu konsultaciju.</h2>
-    <p>Odgovaramo u roku od par sati. Bez obaveza — samo razgovor o tome šta ti treba.</p>
+    <p>Odgovaramo u roku od par sati. Bez obaveza - samo razgovor o tome šta ti treba.</p>
     <a href="https://wa.me/381600750754?text=Zdravo!%20Zanima%20me%20saradnja." class="btn btn-primary" target="_blank" rel="noopener">
       Piši na WhatsApp
     </a>

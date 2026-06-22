@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const calcAnswers = {};
   const packages = {
     'brand_low_urgent':   {name:'Starter', price:'89', desc:'Brzi vrhunski logo + boje + highlights ikone.', features:['Glavni logo + varijante','Paleta od 3-5 brand boja','Set highlights ikona','Svi formati','Isporuka 2-3 dana']},
-    'brand_low_normal':   {name:'Starter', price:'89', desc:'Logo i boje vrhunskog kvaliteta — odlična startna tačka.', features:['Glavni logo + varijante','Paleta od 3-5 brand boja','Set highlights ikona','Svi formati','Isporuka 2-3 dana']},
+    'brand_low_normal':   {name:'Starter', price:'89', desc:'Logo i boje vrhunskog kvaliteta - odlična startna tačka.', features:['Glavni logo + varijante','Paleta od 3-5 brand boja','Set highlights ikona','Svi formati','Isporuka 2-3 dana']},
     'brand_low_flexible': {name:'Starter', price:'89', desc:'Vrhunski logo i osnovni vizualni identitet.', features:['Glavni logo + varijante','Paleta brand boja','Highlights ikone','Svi formati']},
     'brand_mid_urgent':   {name:'Starter', price:'89', desc:'Brz i vrhunski logo bez čekanja.', features:['Glavni logo + varijante','Paleta brand boja','Highlights ikone','Isporuka 2-3 dana']},
     'brand_mid_normal':   {name:'Business', price:'249', desc:'Kompletan vrhunski vizuelni identitet.', features:['Sve iz Starter paketa','Unikatna brand pozadina','Cover, ikone, profilna','3 gotova šablona','Isporuka 5-7 dana']},
@@ -194,16 +194,16 @@ document.addEventListener('DOMContentLoaded', () => {
     'ads_low_normal':     {name:'Basic', price:'30', desc:'Najpovoljniji način da dobiješ vrhunski oglas.', features:['1 oglasna kreativa','Story verzija','Svi formati','Isporuka 24-48h']},
     'ads_low_flexible':   {name:'Basic', price:'30', desc:'Idealna ulazna tačka.', features:['1 oglasna kreativa','Story verzija','Svi formati']},
     'ads_mid_urgent':     {name:'Standard', price:'80', desc:'3 različite vrhunske kreative koje algoritam testira.', features:['3 različite oglasne kreative','3 udarna naslova','Story verzije','Isporuka 3-5 dana']},
-    'ads_mid_normal':     {name:'Standard', price:'80', desc:'Najpopularniji paket — 3 vrhunske kreative.', features:['3 različite oglasne kreative','3 udarna naslova','Story verzije','Isporuka 3-5 dana']},
+    'ads_mid_normal':     {name:'Standard', price:'80', desc:'Najpopularniji paket - 3 vrhunske kreative.', features:['3 različite oglasne kreative','3 udarna naslova','Story verzije','Isporuka 3-5 dana']},
     'ads_mid_flexible':   {name:'Standard', price:'80', desc:'Set vrhunskih kreativa za dobru oglasnu kampanju.', features:['3 različite oglasne kreative','3 udarna naslova','Story verzije']},
     'ads_high_urgent':    {name:'Standard', price:'80', desc:'Najveći paket koji se može brzo isporučiti.', features:['3 oglasne kreative','3 naslova','Isporuka 3-5 dana']},
     'ads_high_normal':    {name:'Premium', price:'150', desc:'Veliki set za višemesečnu kampanju + retargeting.', features:['6 vrhunskih oglasnih objava','Story verzije','Retargeting kreative','Isporuka 5-7 dana']},
-    'ads_high_flexible':  {name:'Premium', price:'150', desc:'Kompletna oglasna strategija — 6 vrhunskih kreativa.', features:['6 vrhunskih oglasnih objava','Story verzije','Retargeting kreative','Plan rotacije']},
-    'both_low_urgent':    {name:'Basic + Starter', price:'119', desc:'Brzi start — logo + 1 oglas.', features:['Logo + brand boje','1 oglasna kreativa','Story verzija','Isporuka 3-5 dana']},
-    'both_low_normal':    {name:'Starter', price:'89', desc:'Počnimo sa vrhunskim brendom — oglase dodajemo kasnije.', features:['Logo + brand boje','Highlights ikone','Svi formati']},
-    'both_low_flexible':  {name:'Starter', price:'89', desc:'Vrhunski start — logo prvo, oglasi kad budu gotovi.', features:['Logo + brand boje','Highlights ikone','Postupna nadogradnja']},
+    'ads_high_flexible':  {name:'Premium', price:'150', desc:'Kompletna oglasna strategija - 6 vrhunskih kreativa.', features:['6 vrhunskih oglasnih objava','Story verzije','Retargeting kreative','Plan rotacije']},
+    'both_low_urgent':    {name:'Basic + Starter', price:'119', desc:'Brzi start - logo + 1 oglas.', features:['Logo + brand boje','1 oglasna kreativa','Story verzija','Isporuka 3-5 dana']},
+    'both_low_normal':    {name:'Starter', price:'89', desc:'Počnimo sa vrhunskim brendom - oglase dodajemo kasnije.', features:['Logo + brand boje','Highlights ikone','Svi formati']},
+    'both_low_flexible':  {name:'Starter', price:'89', desc:'Vrhunski start - logo prvo, oglasi kad budu gotovi.', features:['Logo + brand boje','Highlights ikone','Postupna nadogradnja']},
     'both_mid_urgent':    {name:'Business', price:'249', desc:'Kompletan profil + možemo dodati oglase odmah.', features:['Logo + brand boje','Digitalni izlog','3 šablona','Isporuka 5-7 dana']},
-    'both_mid_normal':    {name:'Business + Standard', price:'329', desc:'Najpopularnija kombinacija — kompletan brend + oglasne kreative.', features:['Sve iz Business paketa','3 oglasne kreative + naslovi','Story verzije','Isporuka 7-10 dana']},
+    'both_mid_normal':    {name:'Business + Standard', price:'329', desc:'Najpopularnija kombinacija - kompletan brend + oglasne kreative.', features:['Sve iz Business paketa','3 oglasne kreative + naslovi','Story verzije','Isporuka 7-10 dana']},
     'both_mid_flexible':  {name:'Business', price:'249', desc:'Kompletan vrhunski brending sada, oglasi po potrebi.', features:['Logo + boje','Digitalni izlog','3 šablona']},
     'both_high_urgent':   {name:'Business + Standard', price:'329', desc:'Najveći paket koji se može brzo isporučiti.', features:['Kompletan brend','3 oglasne kreative','Isporuka 7-10 dana']},
     'both_high_normal':   {name:'Full Brand Kit + Premium', price:'1000', desc:'Naša najbolja ponuda.', features:['Sve iz Full Brand Kit','6 oglasnih kreativa','Retargeting kampanja','Materijali za štampu','Brand book']},
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 // =========================================================
-// INTERAKTIVNI HERO KAKTUS — tilt na miš (desktop) i dodir (mobilni)
+// INTERAKTIVNI HERO KAKTUS - tilt na miš (desktop) i dodir (mobilni)
 // =========================================================
 (function(){
   const hero3d = document.querySelector('.hero-3d');
@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     logoRev: { 2: 0, 5: 15, 'unl': 35 },
     levelMult: { 'std': 1.0, 'prem': 1.35 },
     brand: { 1: 70, 2: 240, 3: 590 },
-    brandNames: { 1: 'Branding — Logo+', 2: 'Branding — Identitet', 3: 'Branding — Pun brend' },
+    brandNames: { 1: 'Branding - Logo+', 2: 'Branding - Identitet', 3: 'Branding - Pun brend' },
     addons: { vizit: 25, memo: 20, koverat: 18, flajer: 30, brosura: 45, rollup: 35, plakat: 28, nalepnice: 22, ambalaza: 55, uniforme: 40, jelovnik: 35, stampa: 15 },
     addonNames: { vizit: 'Vizit karta', memo: 'Memorandum', koverat: 'Koverat', flajer: 'Flajer / letak', brosura: 'Brošura / katalog', rollup: 'Roll-up baner', plakat: 'Plakat / poster', nalepnice: 'Nalepnice / etikete', ambalaza: 'Ambalaža', uniforme: 'Uniforme / radna odeća', jelovnik: 'Jelovnik / cenovnik', stampa: 'Priprema za štampu' },
     fullBrandFree: ['vizit','memo','stampa','flajer','uniforme'],  // auto-besplatni u Pun brendu
@@ -347,7 +347,19 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Glavni update
+  let __clickCounter = 0;
   window.calc2Update = function(){
+    // Prati redosled klikanja dodataka (za "prvi gratis" logiku u Pun brendu)
+    ['vizit','memo','koverat','flajer','brosura','rollup','plakat','nalepnice','ambalaza','uniforme','jelovnik','stampa'].forEach(a => {
+      const cb = document.getElementById('add-'+a);
+      if (!cb) return;
+      if (cb.checked && !cb.dataset.clickOrder) {
+        cb.dataset.clickOrder = String(++__clickCounter);
+      } else if (!cb.checked && cb.dataset.clickOrder) {
+        delete cb.dataset.clickOrder;  // otčekiran - oslobodi redni broj
+      }
+    });
+
     const wantLogo = document.getElementById('cat-logo').checked;
     const wantBrand = document.getElementById('cat-branding').checked;
     const wantMeta = document.getElementById('cat-meta').checked;
@@ -371,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const metaHint = document.getElementById('meta-hint');
     if (metaHint) {
       metaHint.textContent = state.metaLevel === 'std'
-        ? 'Standard: ti šalješ gotov naslov, CTA i koncept — mi dizajniramo.'
+        ? 'Standard: ti šalješ gotov naslov, CTA i koncept - mi dizajniramo.'
         : 'Premium: mi smišljamo naslov, CTA i celu kompoziciju kreative.';
     }
 
@@ -405,13 +417,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const allAddons = ['vizit','memo','koverat','flajer','brosura','rollup','plakat','nalepnice','ambalaza','uniforme','jelovnik','stampa'];
       const freeSet = PRICES.fullBrandFree;  // auto-besplatni u Pun brendu
 
-      // Pronađi koji je "prvi po izboru gratis" (prvi čekiran koji NIJE auto-besplatan)
+      // Pronađi "prvi po izboru gratis" = čekiran ne-auto dodatak sa NAJRANIJIM klikom
       let firstChosenFree = null;
       if (isFullBrand) {
+        let earliest = Infinity;
         for (const a of allAddons) {
           if (freeSet.includes(a)) continue;
           const cb = document.getElementById('add-'+a);
-          if (cb && cb.checked) { firstChosenFree = a; break; }
+          if (cb && cb.checked) {
+            const order = parseInt(cb.dataset.clickOrder || '0', 10);
+            if (order > 0 && order < earliest) { earliest = order; firstChosenFree = a; }
+          }
         }
       }
 
@@ -426,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (wrapper) { wrapper.classList.add('calc2-chip-included'); wrapper.classList.remove('calc2-chip-free'); }
           breakdown.push({ label: PRICES.addonNames[a], price: 0, included: true });
         } else if (isFullBrand && a === firstChosenFree) {
-          // Prvi po izboru — gratis
+          // Prvi po izboru (najraniji klik) - gratis
           cb.disabled = false;
           if (wrapper) { wrapper.classList.add('calc2-chip-free'); wrapper.classList.remove('calc2-chip-included'); }
           breakdown.push({ label: PRICES.addonNames[a] + ' (gratis)', price: 0, included: true });
@@ -441,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     } else {
-      // Nije branding — resetuj sve chip stilove i disabled
+      // Nije branding - resetuj sve chip stilove i disabled
       ['vizit','memo','koverat','flajer','brosura','rollup','plakat','nalepnice','ambalaza','uniforme','jelovnik','stampa'].forEach(a => {
         const cb = document.getElementById('add-'+a);
         if (cb) { cb.disabled = false; const w = cb.closest('.calc2-chip'); if (w) w.classList.remove('calc2-chip-included','calc2-chip-free'); }
@@ -470,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const disc = metaDiscount(n);
       let meta = Math.round(base * (1 - disc) * n);
       total += meta;
-      let lbl = `Meta Ads — ${n} kreativa (${state.metaLevel==='prem'?'Premium':'Standard'})`;
+      let lbl = `Meta Ads - ${n} kreativa (${state.metaLevel==='prem'?'Premium':'Standard'})`;
       breakdown.push({ label: lbl, price: meta });
       if (disc > 0) {
         breakdown.push({ label: `Količinski popust −${Math.round(disc*100)}%`, price: 0, note: true });
@@ -493,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const anything = logoActive || wantBrand || wantMeta;
 
     if (!anything || total <= 0) {
-      priceEl.textContent = '—';
+      priceEl.textContent = '-';
       noteEl.textContent = 'Izaberi bar jednu uslugu da vidiš cenu.';
       noteEl.hidden = false;
       bdEl.innerHTML = '';
@@ -550,7 +566,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 // =========================================================
-// HERO VIDEO — bira desktop ili mobilni izvor po širini ekrana
+// HERO VIDEO - bira desktop ili mobilni izvor po širini ekrana
 // =========================================================
 (function(){
   const v = document.querySelector('.hero-video');
@@ -565,4 +581,94 @@ document.addEventListener('DOMContentLoaded', () => {
   v.load();
   // Pokušaj autoplay (neki browseri ga blokiraju dok se ne učita)
   v.play().catch(()=>{});
+})();
+
+// =========================================================
+// KALKULATOR WIZARD - korak po korak + sticky footer
+// =========================================================
+(function(){
+  if (!document.getElementById('calc2-price')) return;
+
+  let step = 0;  // 0 = izbor kategorija, 1 = opcije
+  const stepsEl = document.getElementById('calc2-steps');
+  const navEl = document.getElementById('calc2-nav');
+  const backBtn = document.getElementById('calc2-back');
+  const nextBtn = document.getElementById('calc2-next');
+  const sticky = document.getElementById('calc2-sticky');
+
+  function anyCategory(){
+    return document.getElementById('cat-logo').checked ||
+           document.getElementById('cat-branding').checked ||
+           document.getElementById('cat-meta').checked;
+  }
+
+  function renderStep(){
+    // Prikaži blokove po koraku
+    document.querySelectorAll('[data-wizard="0"]').forEach(el => el.style.display = (step===0)?'':'none');
+    document.querySelectorAll('[data-wizard="1"]').forEach(el => {
+      // korak 1 sekcije se prikazuju samo ako su relevantne (calc2Update upravlja hidden)
+      el.style.display = (step===1)?'':'none';
+    });
+
+    // Step dots
+    if (stepsEl) {
+      stepsEl.hidden = false;
+      stepsEl.querySelectorAll('.calc2-step-dot').forEach(d => {
+        d.classList.toggle('active', parseInt(d.dataset.step,10) <= step);
+      });
+    }
+
+    // Navigacija
+    if (step === 0) {
+      backBtn.hidden = true;
+      nextBtn.hidden = false;
+      nextBtn.textContent = 'Dalje →';
+      nextBtn.disabled = !anyCategory();
+    } else {
+      backBtn.hidden = false;
+      nextBtn.hidden = true;
+    }
+
+    // Sticky footer se vidi tek na koraku 1
+    if (sticky) sticky.hidden = (step !== 1);
+
+    // Pozoveri update da osveži vidljivost sekcija
+    if (window.calc2Update) window.calc2Update();
+  }
+
+  window.calc2Step = function(dir){
+    const newStep = step + dir;
+    if (newStep < 0 || newStep > 1) return;
+    if (newStep === 1 && !anyCategory()) return;
+    step = newStep;
+    renderStep();
+    // Skrol na vrh kalkulatora
+    document.getElementById('kalkulator').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  // Kad se promeni kategorija, omogući/onemogući Dalje
+  ['cat-logo','cat-branding','cat-meta'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('change', () => { if (step===0) nextBtn.disabled = !anyCategory(); });
+  });
+
+  // Toggle detalja u sticky footeru
+  window.calc2ToggleDetail = function(){
+    const panel = document.getElementById('calc2-detail-panel');
+    const btn = document.getElementById('calc2-detail-btn');
+    if (!panel) return;
+    panel.hidden = !panel.hidden;
+    if (btn) btn.textContent = panel.hidden ? 'Detalji' : 'Sakrij';
+  };
+
+  // Override reset da vrati na korak 0
+  const origReset = window.calc2Reset;
+  window.calc2Reset = function(){
+    if (origReset) origReset();
+    step = 0;
+    renderStep();
+  };
+
+  // Init
+  renderStep();
 })();
