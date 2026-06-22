@@ -679,15 +679,23 @@ document.addEventListener('DOMContentLoaded', () => {
 (function(){
   if (typeof fbq === 'undefined') return;
 
-  // Hvata SVE klikove na WhatsApp linkove (nav, hero, footer, paketi, kalkulator)
+  // Hvata klikove na SVE kontakt kanale: WhatsApp, telefon, Messenger, Instagram
   document.addEventListener('click', function(e){
-    const link = e.target.closest('a[href*="wa.me/381600750754"]');
-    if (link) {
-      // Da li je upit iz kalkulatora (sticky dugme) ili obično WhatsApp dugme
+    const link = e.target.closest('a');
+    if (!link || !link.href) return;
+    const href = link.href;
+
+    let channel = null;
+    if (href.includes('wa.me/381600750754')) channel = 'WhatsApp';
+    else if (href.startsWith('tel:')) channel = 'Telefon';
+    else if (href.includes('m.me/')) channel = 'Messenger';
+    else if (href.includes('instagram.com/kaktus')) channel = 'Instagram';
+
+    if (channel) {
       const isCalc = link.id === 'calc2-wa' || link.closest('.calc2-sticky');
       fbq('track', 'Lead', {
-        content_name: isCalc ? 'Kalkulator upit' : 'WhatsApp kontakt',
-        content_category: isCalc ? 'calculator' : 'whatsapp'
+        content_name: isCalc ? ('Kalkulator - ' + channel) : (channel + ' kontakt'),
+        content_category: channel.toLowerCase()
       });
     }
   }, true);
