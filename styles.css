@@ -1932,3 +1932,88 @@ html.has-cursor, html.has-cursor body { cursor: none; }
     transform: scale(0.96);
   }
 }
+
+/* ============================================================
+   HERO VIDEO POZADINA + mobile-first raspored (v2)
+   ============================================================ */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  pointer-events: none;
+}
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* Tamniji pri vrhu i dnu za čitljivost teksta */
+  background:
+    linear-gradient(to bottom,
+      rgba(11,13,11,0.55) 0%,
+      rgba(11,13,11,0.25) 35%,
+      rgba(11,13,11,0.55) 70%,
+      rgba(11,13,11,0.92) 100%);
+  pointer-events: none;
+}
+/* Aurora isključena kad ima video (video je pozadina) */
+.hero::before { display: none; }
+
+/* Stats sekcija (van hero-a sada) */
+.stats-section {
+  padding-block: 0 clamp(3rem, 8vw, 5rem);
+  background: var(--bg);
+}
+
+/* ---- MOBILE-FIRST HERO sa videom ---- */
+@media (max-width: 920px) {
+  .hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: stretch;
+    padding-block: 1.5rem 2rem;
+  }
+  .hero .container {
+    display: flex; flex-direction: column;
+    width: 100%;
+    padding-left: 1.5rem;   /* margina sa leve da tekst ne pipa ivicu */
+    padding-right: 1.5rem;
+  }
+  .hero-grid { display: flex; flex-direction: column; flex: 1; gap: 0; }
+  .hero-grid > div:first-child { display: flex; flex-direction: column; flex: 1; }
+
+  /* Headline gore, sa marginama, ne pipa ivice */
+  .hero h1 {
+    text-align: left;
+    margin-top: 0.5rem;
+    padding-right: 1rem;
+  }
+
+  /* Lead — minimalan, gurnut dole iznad dugmadi */
+  .hero .lead {
+    text-align: left;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    margin-top: auto;
+    margin-bottom: 0;
+    max-width: 100%;
+    color: var(--text-muted);
+  }
+
+  /* Dugmad skroz dole */
+  .hero-actions {
+    justify-content: flex-start;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+}
+
+/* Poštuj reduced-motion: pauziraj video */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video { display: none; }
+  .hero { background: var(--bg-elevated); }
+}
