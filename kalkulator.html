@@ -272,6 +272,36 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
 </section>
 
 
+<!-- LEAD FORMA (primarni okidač) -->
+<section class="landing-lead">
+  <div class="container">
+    <div class="lead-form-card">
+      <h2 class="lead-form-title">Pošalji upit za <span class="accent">2 minuta</span></h2>
+      <p class="lead-form-sub">Ostavi ime i broj - javljamo se sa konkretnom ponudom. Tvoja procena iz kalkulatora se automatski šalje uz upit.</p>
+      <div class="lead-form" id="lead-form">
+        <div class="lead-field">
+          <label for="lead-name">Ime</label>
+          <input type="text" id="lead-name" placeholder="Tvoje ime" autocomplete="name">
+        </div>
+        <div class="lead-field">
+          <label for="lead-phone">Telefon</label>
+          <input type="tel" id="lead-phone" placeholder="06x xxx xxxx" autocomplete="tel">
+        </div>
+        <div class="lead-summary" id="lead-summary" hidden>
+          <span class="lead-summary-label">Tvoja procena:</span>
+          <span class="lead-summary-val" id="lead-summary-val">-</span>
+        </div>
+        <button type="button" class="btn btn-primary lead-submit" id="lead-submit" onclick="submitLeadForm()">
+          Pošalji upit na WhatsApp →
+        </button>
+        <p class="lead-error" id="lead-error" hidden>Unesi ime i broj telefona.</p>
+        <p class="lead-note">Bez obaveza. Odgovaramo obično u roku od sat vremena.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- PRIMERI RADOVA -->
 <section class="landing-works">
   <div class="container">
@@ -321,8 +351,8 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
 <!-- KONTAKT sekcija na kraju -->
 <section class="landing-contact">
   <div class="container">
-    <h2 class="landing-contact-title">Spreman da kreneš?</h2>
-    <p class="landing-contact-sub">Izaberi kako ti je najlakše da nas kontaktiraš - odgovaramo brzo.</p>
+    <h2 class="landing-contact-title">Ili nas kontaktiraj direktno</h2>
+    <p class="landing-contact-sub">Više voliš da pišeš ili zoveš? Izaberi kako ti odgovara.</p>
     <div class="contact-grid">
       <a href="https://wa.me/381600750754?text=Zdravo!%20Koristio/la%20sam%20kalkulator%20i%20zanima%20me%20ponuda." class="contact-btn contact-wa" target="_blank" rel="noopener">
         <span class="contact-icon">

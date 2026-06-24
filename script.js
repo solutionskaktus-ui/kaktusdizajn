@@ -700,3 +700,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, true);
 })();
+
+// =========================================================
+// LEAD FORMA (kalkulator landing) — šalje na WhatsApp + Pixel Lead
+// =========================================================
+(function(){
+  const form = document.getElementById('lead-form');
+  if (!form) return;
+
+  const priceEl = document.getElementById('calc2-price');
+  const summaryWrap = document.getElementById('lead-summary');
+  const summaryVal = document.getElementById('lead-summary-val');
+
+  // Osveži prikaz procene u formi kad se cena promeni
+  function refreshSummary(){
+    if (!priceEl || !summaryVal) return;
+    const price = priceEl.textContent.trim();
+    if (price && price !== '-' && price !== '—') {
+      summaryVal.textContent = price;
+      if (summaryWrap) summaryWrap.hidden = false;
+    } else {
+      if (summaryWrap) summaryWrap.hidden = true;
+    }
+  }
+  // Posmatraj promene cene
+  if (priceEl) {
+    const obs = new MutationObserver(refreshSummary);
+    obs.observe(priceEl, { childList: true, characterData: true, subtree: true });
+    refreshSummary();
+  }
+
+  window.submitLeadForm = function(){
+    const name = document.getElementById('lead-name').value.trim();
+    const phone = document.getElementById('lead-phone').value.trim();
+    const err = document.getElementById('lead-error');
+
+    if (!name || !phone) {
+      if (err) err.hidden = false;
+      return;
+    }
+    if (err) err.hidden = true;
+
+    // Sastavi poruku sa procenom iz kalkulatora
+    const price = priceEl ? priceEl.textContent.trim() : '';
+    let msg = `Zdravo! Zovem se ${name}.\nTelefon: ${phone}`;
+    if (price && price !== '-' && price !== '—') {
+      msg += `\nProcena iz kalkulatora: ${price}`;
+    }
+    msg += `\n\nZanima me ponuda.`;
+
+    // Pixel Lead event (primarni okidač)
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Lead', {
+        content_name: 'Lead forma',
+        content_category: 'form'
+      });
+    }
+
+    // Otvori WhatsApp sa popunjenim tekstom
+    const wa = 'https://wa.me/381600750754?text=' + encodeURIComponent(msg);
+    window.open(wa, '_blank');
+  };
+})();
