@@ -750,9 +750,10 @@ document.addEventListener('DOMContentLoaded', () => {
     msg += `\n\nIme: ${name}\nTelefon: ${phone}\n\nPozdrav!`;
 
     // Pixel Lead event (primarni okidač)
+    const channelName = method === 'email' ? 'Email' : (method === 'whatsapp' ? 'WhatsApp' : 'SMS');
     if (typeof fbq !== 'undefined') {
       fbq('track', 'Lead', {
-        content_name: 'Lead forma - ' + (method === 'email' ? 'Email' : 'SMS'),
+        content_name: 'Lead forma - ' + channelName,
         content_category: 'form'
       });
     }
@@ -762,6 +763,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const subject = 'Upit sa kalkulatora - ' + name;
       const mail = 'mailto:solutionskaktus@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(msg);
       window.location.href = mail;
+    } else if (method === 'whatsapp') {
+      // WhatsApp sa popunjenom porukom
+      const wa = 'https://wa.me/381600750754?text=' + encodeURIComponent(msg);
+      window.open(wa, '_blank');
     } else {
       // SMS — otvara SMS aplikaciju sa popunjenim tekstom
       // iOS koristi &body=, Android ?body= — koristimo ?body= (širi support)

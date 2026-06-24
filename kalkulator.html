@@ -291,11 +291,17 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
           <span class="lead-summary-label">Tvoja procena:</span>
           <span class="lead-summary-val" id="lead-summary-val">-</span>
         </div>
-        <button type="button" class="btn btn-primary lead-submit" id="lead-submit" onclick="submitLeadForm('sms')">
-          Pošalji upit (SMS) →
-        </button>
-        <button type="button" class="btn btn-secondary lead-submit-email" id="lead-submit-email" onclick="submitLeadForm('email')">
-          Pošalji preko email-a
+        <div class="lead-actions">
+          <button type="button" class="btn btn-primary lead-submit" id="lead-submit" onclick="submitLeadForm('sms')">
+            Pošalji upit (SMS) →
+          </button>
+          <button type="button" class="btn btn-wa lead-submit-wa" id="lead-submit-wa" onclick="submitLeadForm('whatsapp')">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2"/></svg>
+            WhatsApp
+          </button>
+        </div>
+        <button type="button" class="lead-email-link" id="lead-submit-email" onclick="submitLeadForm('email')">
+          ili pošalji preko email-a
         </button>
         <p class="lead-error" id="lead-error" hidden>Unesi ime i broj telefona.</p>
         <p class="lead-note">Bez obaveza. Odgovaramo obično u roku od sat vremena.</p>

@@ -2297,3 +2297,33 @@ html.has-cursor, html.has-cursor body { cursor: none; }
   .faq-question { padding: 1.1rem 1rem; font-size: 0.95rem; }
   .faq-answer-inner { padding: 0 1rem 1.1rem; }
 }
+
+/* ============================================================
+   LEAD FORMA — SMS + WhatsApp dugmad pored, email tihi link
+   ============================================================ */
+.lead-actions { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+.lead-actions .lead-submit { flex: 1.4; justify-content: center; font-size: 1rem; padding: 1rem; margin: 0; }
+.lead-submit-wa {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center; gap: 0.45rem;
+  background: #25D366; color: #fff;
+  border: none; border-radius: inherit;
+  font-family: var(--font-body); font-weight: 700; font-size: 0.95rem;
+  padding: 1rem; cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+}
+.lead-submit-wa:hover { background: #20bd5a; }
+.lead-submit-wa:active { transform: scale(0.97); }
+.lead-email-link {
+  display: block; width: 100%; text-align: center;
+  background: none; border: none; cursor: pointer;
+  color: var(--text-muted); font-size: 0.85rem;
+  font-family: var(--font-body); text-decoration: underline;
+  padding: 0.5rem; margin-top: 0.25rem;
+}
+.lead-email-link:hover { color: var(--gold); }
+
+@media (max-width: 420px) {
+  .lead-actions { flex-direction: column; }
+  .lead-actions .lead-submit, .lead-submit-wa { flex: none; width: 100%; }
+}
