@@ -533,13 +533,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
 
     // WhatsApp link sa specifikacijom
-    let msg = 'Zdravo! Zainteresovan/a sam za:\n\n';
+    let msg = 'Zdravo!\nPotreban mi je dizajn, uradio sam kalkulator i izbacio mi je okvirnu cenu:\n\n';
     breakdown.forEach(item => {
       if (item.note || item.discount) return;
       if (item.included) { msg += `• ${item.label}: uključeno\n`; return; }
       msg += `• ${item.label}: ${item.price}€\n`;
     });
-    msg += `\nUkupno (okvirno): ${total}€\n\nPoslato preko kalkulatora na sajtu.`;
+    msg += `\nUkupno (okvirno): ${total}€\n\nPozdrav!`;
     waEl.href = 'https://wa.me/381600750754?text=' + encodeURIComponent(msg);
     waEl.hidden = false;
   };
@@ -730,7 +730,7 @@ document.addEventListener('DOMContentLoaded', () => {
     refreshSummary();
   }
 
-  window.submitLeadForm = function(){
+  window.submitLeadForm = function(method){
     const name = document.getElementById('lead-name').value.trim();
     const phone = document.getElementById('lead-phone').value.trim();
     const err = document.getElementById('lead-error');
@@ -743,22 +743,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Sastavi poruku sa procenom iz kalkulatora
     const price = priceEl ? priceEl.textContent.trim() : '';
-    let msg = `Zdravo! Zovem se ${name}.\nTelefon: ${phone}`;
+    let msg = 'Zdravo!\nPotreban mi je dizajn, uradio sam kalkulator i izbacio mi je okvirnu cenu:';
     if (price && price !== '-' && price !== '—') {
-      msg += `\nProcena iz kalkulatora: ${price}`;
+      msg += `\n\nOkvirna cena: ${price}`;
     }
-    msg += `\n\nZanima me ponuda.`;
+    msg += `\n\nIme: ${name}\nTelefon: ${phone}\n\nPozdrav!`;
 
     // Pixel Lead event (primarni okidač)
     if (typeof fbq !== 'undefined') {
       fbq('track', 'Lead', {
-        content_name: 'Lead forma',
+        content_name: 'Lead forma - ' + (method === 'email' ? 'Email' : 'SMS'),
         content_category: 'form'
       });
     }
 
-    // Otvori WhatsApp sa popunjenim tekstom
-    const wa = 'https://wa.me/381600750754?text=' + encodeURIComponent(msg);
-    window.open(wa, '_blank');
+    if (method === 'email') {
+      // Email (mailto) — radi na desktopu i mobilnom
+      const subject = 'Upit sa kalkulatora - ' + name;
+      const mail = 'mailto:solutionskaktus@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(msg);
+      window.location.href = mail;
+    } else {
+      // SMS — otvara SMS aplikaciju sa popunjenim tekstom
+      // iOS koristi &body=, Android ?body= — koristimo ?body= (širi support)
+      const ua = navigator.userAgent || '';
+      const sep = /iphone|ipad|ipod|mac/i.test(ua) ? '&' : '?';
+      const sms = 'sms:+381600750754' + sep + 'body=' + encodeURIComponent(msg);
+      window.location.href = sms;
+    }
   };
 })();

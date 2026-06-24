@@ -2287,3 +2287,6 @@ html.has-cursor, html.has-cursor body { cursor: none; }
 
 /* Sekundarni kontakti — malo manje istaknuti */
 .landing-contact { padding-top: 2rem; }
+
+/* Lead forma - email dugme (sekundarno) */
+.lead-submit-email { width: 100%; justify-content: center; margin-top: 0.5rem; font-size: 0.9rem; padding: 0.85rem; }
