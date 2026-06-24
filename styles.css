@@ -644,7 +644,7 @@ section { padding-block: var(--section-pad); position: relative; }
 .process-step p { font-size: 0.93rem; }
 
 /* ---------- FAQ ---------- */
-.faq-list { margin-top: 3rem; max-width: 800px; }
+.faq-list { margin-top: 4rem; max-width: 760px; margin-left: auto; margin-right: 0; }
 .faq-item {
   border-bottom: 1px solid var(--border);
 }
@@ -654,13 +654,13 @@ section { padding-block: var(--section-pad); position: relative; }
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
   text-align: left;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
   color: var(--text);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   transition: color 0.2s var(--ease);
 }
 .faq-question:hover { color: var(--gold); }
@@ -682,7 +682,7 @@ section { padding-block: var(--section-pad); position: relative; }
   transition: max-height 0.4s var(--ease);
 }
 .faq-answer-inner {
-  padding-bottom: 1.5rem;
+  padding: 0 1.5rem 1.5rem 2rem;
   color: var(--text-muted);
   line-height: 1.7;
 }
@@ -2288,5 +2288,9 @@ html.has-cursor, html.has-cursor body { cursor: none; }
 /* Sekundarni kontakti — malo manje istaknuti */
 .landing-contact { padding-top: 2rem; }
 
-/* Lead forma - email dugme (sekundarno) */
-.lead-submit-email { width: 100%; justify-content: center; margin-top: 0.5rem; font-size: 0.9rem; padding: 0.85rem; }
+/* FAQ na mobilnom - puna širina, manji padding levo */
+@media (max-width: 768px) {
+  .faq-list { margin-top: 2rem; margin-left: 0; max-width: 100%; }
+  .faq-question { padding: 1.25rem 0.5rem 1.25rem 0; font-size: 1rem; }
+  .faq-answer-inner { padding: 0 0.5rem 1.25rem 0; }
+}
