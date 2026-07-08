@@ -108,7 +108,7 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
       <p class="calc2-subtitle">Online za 2-5 dana · 2 revizije · Hosting 0€ · Radi savršeno na telefonu</p>
     </div>
 
-    <div class="calc2">
+    <div class="calc2 sajt-receipt-layout">
       <div class="calc2-form">
 
         <div class="calc2-block">
@@ -127,42 +127,36 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
           </div>
 
           <div class="calc2-step-label calc2-step-main" style="margin-top:1.5rem;">2. Dodaci</div>
-          <p class="calc2-hint">Izaberi šta ti treba - sve ostalo je već uključeno.</p>
-          <div class="calc2-chips">
-            <label class="calc2-chip sajt-chip"><input type="checkbox" id="sadd-tekstovi" onchange="sajtUpdate()"><span>Pisanje tekstova <em>+20€</em></span></label>
-            <label class="calc2-chip sajt-chip"><input type="checkbox" id="sadd-galerija" onchange="sajtUpdate()"><span>Galerija sa uvećanjem <em>+20€</em></span></label>
-            <label class="calc2-chip sajt-chip"><input type="checkbox" id="sadd-mapa" onchange="sajtUpdate()"><span>Google mapa <em>+10€</em></span></label>
-            <label class="calc2-chip sajt-chip"><input type="checkbox" id="sadd-forma" onchange="sajtUpdate()"><span>Kontakt forma (SMS/WA/email) <em>+15€</em></span></label>
-            <label class="calc2-chip sajt-chip"><input type="checkbox" id="sadd-dvojezicno" onchange="sajtUpdate()"><span>Dvojezično SR+EN <em>+40€</em></span></label>
-            <label class="calc2-chip sajt-chip"><input type="checkbox" id="sadd-calendly" onchange="sajtUpdate()"><span>Zakazivanje (Calendly) <em>+15€</em></span></label>
-            <label class="calc2-chip sajt-chip"><input type="checkbox" id="sadd-kalkulator" onchange="sajtUpdate()"><span>Kalkulator cena / kviz <em>+50€</em></span></label>
-            <label class="calc2-chip sajt-chip"><input type="checkbox" id="sadd-animacije" onchange="sajtUpdate()"><span>Premium animacije <em>+30€</em></span></label>
-            <label class="calc2-chip sajt-chip"><input type="checkbox" id="sadd-pixel" onchange="sajtUpdate()"><span>Analytics + Meta Pixel <em>+15€</em></span></label>
-            <label class="calc2-chip sajt-chip"><input type="checkbox" id="sadd-instagram" onchange="sajtUpdate()"><span>Instagram sekcija <em>+15€</em></span></label>
-            <label class="calc2-chip sajt-chip"><input type="checkbox" id="sadd-odrzavanje" onchange="sajtUpdate()"><span>Održavanje <em>10€/mes</em></span></label>
+          <p class="calc2-hint">Izaberi šta ti treba - sve ostalo je već uključeno. Cena se ispisuje uživo desno.</p>
+          <div class="sajt-opts">
+            <label class="sajt-opt"><input type="checkbox" id="sadd-tekstovi" onchange="sajtUpdate()"><span class="sajt-opt-box"></span><span class="sajt-opt-name">Pisanje tekstova</span><span class="sajt-opt-p">+20€</span></label>
+            <label class="sajt-opt"><input type="checkbox" id="sadd-galerija" onchange="sajtUpdate()"><span class="sajt-opt-box"></span><span class="sajt-opt-name">Galerija slika (klik za uvećanje)</span><span class="sajt-opt-p">+20€</span></label>
+            <label class="sajt-opt"><input type="checkbox" id="sadd-mapa" onchange="sajtUpdate()"><span class="sajt-opt-box"></span><span class="sajt-opt-name">Google mapa</span><span class="sajt-opt-p">+10€</span></label>
+            <label class="sajt-opt"><input type="checkbox" id="sadd-forma" onchange="sajtUpdate()"><span class="sajt-opt-box"></span><span class="sajt-opt-name">Kontakt forma (SMS/WA/email)</span><span class="sajt-opt-p">+15€</span></label>
+            <label class="sajt-opt"><input type="checkbox" id="sadd-dvojezicno" onchange="sajtUpdate()"><span class="sajt-opt-box"></span><span class="sajt-opt-name">Dvojezično SR+EN</span><span class="sajt-opt-p">+40€</span></label>
+            <label class="sajt-opt"><input type="checkbox" id="sadd-calendly" onchange="sajtUpdate()"><span class="sajt-opt-box"></span><span class="sajt-opt-name">Online zakazivanje termina</span><span class="sajt-opt-p">+15€</span></label>
+            <label class="sajt-opt"><input type="checkbox" id="sadd-kalkulator" onchange="sajtUpdate()"><span class="sajt-opt-box"></span><span class="sajt-opt-name">Kalkulator cena / kviz</span><span class="sajt-opt-p">+50€</span></label>
+            <label class="sajt-opt"><input type="checkbox" id="sadd-animacije" onchange="sajtUpdate()"><span class="sajt-opt-box"></span><span class="sajt-opt-name">Premium animacije</span><span class="sajt-opt-p">+30€</span></label>
+            <label class="sajt-opt"><input type="checkbox" id="sadd-pixel" onchange="sajtUpdate()"><span class="sajt-opt-box"></span><span class="sajt-opt-name">Analytics + Meta Pixel</span><span class="sajt-opt-p">+15€</span></label>
+            <label class="sajt-opt"><input type="checkbox" id="sadd-instagram" onchange="sajtUpdate()"><span class="sajt-opt-box"></span><span class="sajt-opt-name">Instagram galerija + link na profil</span><span class="sajt-opt-p">+15€</span></label>
+            <label class="sajt-opt sajt-opt-monthly"><input type="checkbox" id="sadd-odrzavanje" onchange="sajtUpdate()"><span class="sajt-opt-box"></span><span class="sajt-opt-name">Održavanje <em>(2 izmene mesečno)</em></span><span class="sajt-opt-p">20€/mes</span></label>
           </div>
         </div>
 
       </div>
 
-      <!-- STICKY: cena + CTA -->
-      <div class="calc2-sticky">
-        <div class="calc2-sticky-inner">
-          <div class="calc2-sticky-price">
-            <span class="calc2-sticky-label">Procenjena cena</span>
-            <span class="calc2-result-price" id="sajt-price">150€</span>
-            <span class="calc2-sticky-label" id="sajt-monthly" hidden>+ 10€/mes održavanje</span>
-          </div>
-          <div class="calc2-sticky-actions">
-            <button type="button" class="calc2-sticky-detail" id="sajt-detail-btn" onclick="sajtToggleDetail()">Detalji</button>
-            <a href="#upit" class="btn btn-primary calc2-cta">Pošalji upit →</a>
-          </div>
+      <!-- RAČUN: ispisuje se uživo -->
+      <div class="sajt-receipt">
+        <div class="sajt-receipt-title">Tvoja ponuda</div>
+        <ul class="sajt-receipt-lines" id="sajt-breakdown"></ul>
+        <div class="sajt-receipt-total">
+          <span>Ukupno</span>
+          <span id="sajt-price">150€</span>
         </div>
-        <div class="calc2-detail-panel" id="sajt-detail-panel" hidden>
-          <ul class="calc2-breakdown" id="sajt-breakdown"></ul>
-          <button type="button" class="calc2-reset" onclick="sajtReset()">↺ Resetuj</button>
-          <p class="calc2-disclaimer">Cena je orijentaciona. Finalnu ponudu potvrđujemo u razgovoru. Domen (~12-15€/god) plaća se registraru posebno.</p>
-        </div>
+        <div class="sajt-receipt-monthly" id="sajt-monthly" hidden>+ 20€/mes održavanje</div>
+        <a href="#upit" class="btn btn-primary sajt-receipt-cta">Pošalji upit →</a>
+        <button type="button" class="calc2-reset sajt-receipt-reset" onclick="sajtReset()">↺ Resetuj</button>
+        <p class="sajt-receipt-note">Cena je orijentaciona. Finalnu ponudu potvrđujemo u razgovoru. Domen (~12-15€/god) plaća se registraru posebno.</p>
       </div>
     </div>
   </div>
@@ -210,7 +204,7 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
       </details>
       <details class="faq-item">
         <summary>Da li mogu sam da menjam sajt kasnije?</summary>
-        <p>Sajt nema admin panel - zato je brz, siguran i ne može da se "pokvari". Izmene idu preko nas: uz Održavanje (10€/mes) imaš 2 izmene mesečno uključene, a bez njega izmena je ~10€.</p>
+        <p>Sajt nema admin panel - zato je brz, siguran i ne može da se "pokvari". Izmene idu preko nas: uz Održavanje (20€/mes) imaš 2 izmene mesečno uključene, a bez njega se izmena naplaćuje ~10€ po komadu.</p>
       </details>
       <details class="faq-item">
         <summary>Šta je sa domenom i hostingom?</summary>
@@ -278,13 +272,13 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
 <script>
 // SAJT KALKULATOR - inline logika (izolovano od script.js)
 (function(){
-  var BASE = 150, PER_SECTION = 20, MONTHLY = 10;
+  var BASE = 150, PER_SECTION = 20, MONTHLY = 20;
   var ADDONS = {
-    tekstovi:{c:20,n:'Pisanje tekstova'}, galerija:{c:20,n:'Galerija sa uvećanjem'},
-    mapa:{c:10,n:'Google mapa'}, forma:{c:15,n:'Kontakt forma (SMS/WA/email)'},
-    dvojezicno:{c:40,n:'Dvojezično SR+EN'}, calendly:{c:15,n:'Zakazivanje (Calendly)'},
-    kalkulator:{c:50,n:'Kalkulator cena / kviz'}, animacije:{c:30,n:'Premium animacije'},
-    pixel:{c:15,n:'Analytics + Meta Pixel'}, instagram:{c:15,n:'Instagram sekcija'}
+    tekstovi:{c:20,n:'Pisanje tekstova'}, galerija:{c:20,n:'Galerija slika'},
+    mapa:{c:10,n:'Google mapa'}, forma:{c:15,n:'Kontakt forma'},
+    dvojezicno:{c:40,n:'Dvojezično SR+EN'}, calendly:{c:15,n:'Online zakazivanje'},
+    kalkulator:{c:50,n:'Kalkulator / kviz'}, animacije:{c:30,n:'Premium animacije'},
+    pixel:{c:15,n:'Analytics + Pixel'}, instagram:{c:15,n:'Instagram galerija'}
   };
   var sections = 5;
 
@@ -298,41 +292,32 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
 
   window.sajtUpdate = function(){
     var total = BASE + Math.max(0, sections-5)*PER_SECTION;
-    var lines = ['Sajt do 5 sekcija: '+BASE+'€'];
-    if (sections>5) lines.push('+'+(sections-5)+' sekcija: '+((sections-5)*PER_SECTION)+'€');
+    var lines = [['Sajt ('+sections+' sekcija)', BASE + Math.max(0,sections-5)*PER_SECTION]];
     for (var key in ADDONS){
       var cb = document.getElementById('sadd-'+key);
-      if (cb && cb.checked){ total += ADDONS[key].c; lines.push(ADDONS[key].n+': +'+ADDONS[key].c+'€'); }
+      if (cb && cb.checked){ total += ADDONS[key].c; lines.push([ADDONS[key].n, ADDONS[key].c]); }
     }
     var monthly = document.getElementById('sadd-odrzavanje');
     var hasMonthly = monthly && monthly.checked;
 
     document.getElementById('sajt-price').textContent = total+'€';
     var fv = document.getElementById('sajt-form-val');
-    if (fv) fv.textContent = total+'€' + (hasMonthly ? ' + 10€/mes' : '');
+    if (fv) fv.textContent = total+'€' + (hasMonthly ? ' + '+MONTHLY+'€/mes' : '');
     var mEl = document.getElementById('sajt-monthly');
     mEl.hidden = !hasMonthly;
 
     var bd = document.getElementById('sajt-breakdown');
     var htmlL = '';
-    for (var j=0;j<lines.length;j++) htmlL += '<li><span>'+lines[j].split(': ')[0]+'</span><span>'+lines[j].split(': ')[1]+'</span></li>';
-    if (hasMonthly) htmlL += '<li class="calc2-bd-sub"><span>Održavanje (opciono)</span><span>10€/mes</span></li>';
+    for (var j=0;j<lines.length;j++) htmlL += '<li><span>'+lines[j][0]+'</span><span>'+lines[j][1]+'€</span></li>';
     bd.innerHTML = htmlL;
     window.__sajtState = {total:total, sections:sections, monthly:hasMonthly, lines:lines};
-  };
-
-  window.sajtToggleDetail = function(){
-    var p = document.getElementById('sajt-detail-panel');
-    var b = document.getElementById('sajt-detail-btn');
-    p.hidden = !p.hidden;
-    if (b) b.textContent = p.hidden ? 'Detalji' : 'Sakrij';
   };
 
   window.sajtReset = function(){
     sections = 5;
     var segs = document.querySelectorAll('#sajt-sekcije button');
     for (var i=0;i<segs.length;i++) segs[i].classList.toggle('active', i===0);
-    var chips = document.querySelectorAll('.sajt-chip input');
+    var chips = document.querySelectorAll('.sajt-opt input');
     for (var i2=0;i2<chips.length;i2++) chips[i2].checked = false;
     sajtUpdate();
   };
@@ -351,7 +336,7 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
       if (cb && cb.checked) addonNames.push(ADDONS[key].n);
     }
     var msg = 'Zdravo!\nTreba mi sajt, uradio sam kalkulator i izbacio mi je okvirnu cenu:\n\n' +
-      'Okvirna cena: ' + s.total + '€' + (s.monthly ? ' + 10€/mes održavanje' : '') + '\n' +
+      'Okvirna cena: ' + s.total + '€' + (s.monthly ? ' + 20€/mes održavanje' : '') + '\n' +
       'Broj sekcija: ' + s.sections + '\n' +
       'Dodaci: ' + (addonNames.length ? addonNames.join(', ') : 'bez dodataka') + '\n\n' +
       'Ime: ' + name + '\nTelefon: ' + phone + '\n\nPozdrav!';
