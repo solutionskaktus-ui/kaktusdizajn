@@ -1,10 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sr-RS">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>404 | Kaktus Dizajn</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="/logo.png" type="image/png">
+<meta name="theme-color" content="#F0E9E0" id="metaTheme">
+<script>try{var _t=localStorage.getItem('kaktus-theme');if(_t){document.documentElement.setAttribute('data-theme',_t)}}catch(e){}</script>
 
-<!-- Google tag (gtag.js) -->
+<!-- Google Analytics 4, isti kao ceo sajt -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y9WL0TMXDC"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -12,8 +17,7 @@
   gtag('js', new Date());
   gtag('config', 'G-Y9WL0TMXDC');
 </script>
-
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel, isti kao ceo sajt -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -26,78 +30,330 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1731027437892050');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
-
-<title>404 - Stranica nije pronađena | Kaktus Dizajn</title>
-<meta name="description" content="Stranica koju tražiš ne postoji. Vrati se na početnu.">
-<meta name="robots" content="noindex, follow">
-<link rel="icon" type="image/png" href="logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --h: 32; --s: 34%; --l: 91%;
+  --surface-bg: hsl(var(--h), var(--s), var(--l));
+  --gradient-start: hsl(var(--h), var(--s), calc(var(--l) + 3%));
+  --gradient-end:   hsl(var(--h), var(--s), calc(var(--l) - 4%));
+  --shadow-light: hsl(var(--h), var(--s), min(100%, calc(var(--l) + 8%)));
+  --shadow-dark:  hsl(var(--h), calc(var(--s) + 10%), max(0%, calc(var(--l) - 18%)));
+  --shadow-inset-light: hsl(var(--h), var(--s), min(100%, calc(var(--l) + 5%)));
+  --shadow-inset-dark:  hsl(var(--h), calc(var(--s) + 15%), max(0%, calc(var(--l) - 12%)));
+  --t-main: 68%; --t-soft: 54%; --t-faint: 52%;
+  --text-main:  hsl(var(--h), calc(var(--s) - 10%), calc(var(--l) - var(--t-main)));
+  --text-soft:  hsl(var(--h), calc(var(--s) - 8%),  calc(var(--l) - var(--t-soft)));
+  --text-faint: hsl(var(--h), calc(var(--s) - 6%),  calc(var(--l) - var(--t-faint)));
+  --acc:     hsl(146, 55%, 30%);
+  --acc-lt:  hsl(146, 52%, 43%);
+  --acc-md:  hsl(146, 45%, 40%);
+  --acc-dk:  hsl(146, 60%, 22%);
+  --acc-on:  hsl(146, 60%, 97%);
+  --warm:    hsl(19, 68%, 42%);
+  --e1: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+  --e2: 8px 8px 18px var(--shadow-dark), -8px -8px 18px var(--shadow-light);
+  --e3: 13px 13px 28px var(--shadow-dark), -11px -11px 24px var(--shadow-light);
+  --in1: inset 4px 4px 8px var(--shadow-inset-dark), inset -4px -4px 8px var(--shadow-inset-light);
+  --in2: inset 6px 6px 13px var(--shadow-inset-dark), inset -6px -6px 13px var(--shadow-inset-light);
+  --r: 20px; --r-lg: 28px; --r-xl: 34px;
+  --container: min(880px, 100% - 40px);
+  --ease: cubic-bezier(.22,1,.36,1);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --h: 222; --s: 13%; --l: 19%;
+  --t-main: -72%; --t-soft: -55%; --t-faint: -46%;
+  --acc:    hsl(146, 58%, 54%);
+  --acc-lt: hsl(146, 58%, 64%);
+  --acc-md: hsl(146, 40%, 44%);
+  --acc-dk: hsl(146, 55%, 30%);
+  --acc-on: hsl(146, 60%, 9%);
+  --warm:   hsl(38, 90%, 62%);
+}
+:root[data-theme="dark"] .ic-moon{display:none}
+:root[data-theme="dark"] .ic-sun{display:block}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;color:var(--text-main);background-color:var(--surface-bg);
+  font-family:'Outfit',system-ui,sans-serif;font-size:1rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background-color .35s ease,color .35s ease;
+  min-height:100svh;display:flex;flex-direction:column;
+}
+body::before{content:"";position:fixed;inset:0;z-index:120;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.045;mix-blend-mode:multiply}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(1100px 640px at 16% -6%,
+    hsl(var(--h), var(--s), calc(var(--l) + 4%)) 0%, transparent 60%)}
+h1,h2{margin:0;line-height:1.05;letter-spacing:-.04em;font-weight:800;text-shadow:0 1px 0 var(--shadow-light)}
+p{margin:0}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:6px}
+.container{width:var(--container);margin-inline:auto}
+
+.hdr{padding:12px 0}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 12px 10px 14px;border-radius:22px;
+  background:linear-gradient(145deg,var(--gradient-start),var(--gradient-end));box-shadow:var(--e1)}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.0625rem;letter-spacing:-.02em;text-decoration:none;color:inherit;min-height:2.75rem;transition:transform .3s var(--ease-out)}
+.brand:hover,.brand:active{transform:translateY(1px)}
+.brand img{width:40px;height:40px;flex:none}
+.theme-toggle{position:relative;width:2.875rem;height:2.875rem;border-radius:15px;display:grid;place-items:center;flex:none;
+  color:var(--text-soft);background:linear-gradient(145deg,var(--gradient-start),var(--gradient-end));box-shadow:var(--e1);
+  transition:color .3s,transform .3s var(--ease-out),box-shadow .3s var(--ease-out)}
+.theme-toggle:hover,.theme-toggle:active{color:var(--acc);box-shadow:var(--in1);transform:translateY(1px)}
+.theme-toggle svg{width:20px;height:20px}
+.ic-sun{display:none}
+.ic-moon{display:block}
+
+main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:26px 0 40px}
+.wrap404{text-align:center}
+.code{font-size:clamp(4rem,18vw,7.5rem);color:var(--text-main)}
+.code em{font-style:normal;color:var(--acc)}
+.msg404{color:var(--text-soft);font-size:1.09375rem;margin-top:10px}
+
+.game{margin:30px auto 0;max-width:720px;padding:16px;border-radius:var(--r-xl);
+  background:linear-gradient(145deg,var(--gradient-start),var(--gradient-end));box-shadow:var(--e3)}
+.game-top{display:flex;align-items:center;justify-content:space-between;padding:2px 6px 0;
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.22em;color:var(--text-faint)}
+.game-top b{font-weight:700;color:var(--acc);letter-spacing:.12em}
+.screen{position:relative;margin-top:14px;border-radius:var(--r);box-shadow:var(--in2);overflow:hidden}
+canvas{display:block;width:100%;height:auto;touch-action:manipulation}
+.hint{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:.78125rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint)}
+
+.akcije{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.5rem;padding:0 26px;border-radius:20px;
+  font-weight:700;font-size:1.03125rem;text-decoration:none;
+  transition:transform .3s var(--ease-out),box-shadow .3s var(--ease-out)}
+.btn-primary{color:var(--acc-on);background:linear-gradient(145deg,var(--acc-lt),var(--acc));box-shadow:var(--e1)}
+.btn-primary:hover,.btn-primary:active{box-shadow:inset 4px 4px 9px var(--acc-dk), inset -3px -3px 7px var(--acc-md);transform:translateY(1px)}
+.btn-ghost{color:var(--text-soft);background:linear-gradient(145deg,var(--gradient-start),var(--gradient-end));box-shadow:var(--e1)}
+.btn-ghost:hover,.btn-ghost:active{box-shadow:var(--in1);transform:translateY(1px)}
+
+.ftr{padding:18px 0 26px;text-align:center;font-size:.84375rem;color:var(--text-faint)}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition-duration:120ms !important}
+}
+</style>
 </head>
-
 <body>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
+/></noscript>
 
-<header class="site-header">
-  <div class="container nav">
-    <a href="/" class="nav-brand"><img src="logo.png" alt="Kaktus Dizajn" width="32" height="32"><span>Kaktus Dizajn</span></a>
-    <nav class="nav-links">
-      <a href="/">Početna</a>
-      <a href="logo-dizajn.html">Logo</a>
-      <a href="brending.html">Brending</a>
-      <a href="meta-reklame.html">Reklame</a>
-      <a href="sajt.html">Sajt</a>
-      <a href="kalkulator.html">Kalkulator</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="blog.html">Blog</a>
-      <a href="o-nama.html">O nama</a>
-    </nav>
-    <a href="https://wa.me/381600750754" class="nav-cta" target="_blank" rel="noopener">Piši nam →</a>
-    <button class="nav-toggle" aria-label="Meni"><span></span><span></span><span></span></button>
+<header class="hdr">
+  <div class="container">
+    <div class="hdr-in">
+      <a class="brand" href="/">
+        <img src="/logo.png" alt="" width="40" height="40">
+        Kaktus Dizajn
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Promeni svetlu ili tamnu temu">
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.3 14.6A8.6 8.6 0 0 1 9.4 3.7a8.6 8.6 0 1 0 10.9 10.9z"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
 <main>
-  <section class="error-page">
-    <div>
-      <h1>404</h1>
-      <h2 style="margin-bottom: 1rem;">Ova stranica ne postoji.</h2>
-      <p style="margin-bottom: 2rem; max-width: 50ch;">
-        Možda je link pogrešan ili je stranica premeštena. Vrati se na početnu ili pretraži šta ti treba.
-      </p>
-      <div class="hero-actions" style="justify-content: center;">
-        <a href="/" class="btn btn-primary">Na početnu</a>
-        <a href="portfolio.html" class="btn btn-secondary btn-arrow">Pogledaj radove</a>
+  <div class="container wrap404">
+    <h1 class="code">4<em>0</em>4.</h1>
+    <p class="msg404">Ova strana ne postoji. Ali dok si tu: preskoči kaktuse.</p>
+
+    <div class="game">
+      <div class="game-top">
+        <span>KAKTUS RUNNER</span>
+        <span>SCORE <b id="score">0</b> · HI <b id="hi">0</b></span>
       </div>
+      <div class="screen">
+        <canvas id="igra" width="688" height="220" aria-label="Igra: dinosaurus preskače kaktuse. Space ili dodir za skok."></canvas>
+      </div>
+      <p class="hint" id="hint">PRITISNI SPACE ILI TAPNI ZA START</p>
     </div>
-  </section>
+
+    <div class="akcije">
+      <a class="btn btn-primary" href="/">Vrati me na početnu</a>
+      <a class="btn btn-ghost" href="https://wa.me/381600750754?text=Zdravo!%20Tra%C5%BEio%20sam%20stranu%20koja%20ne%20postoji." target="_blank" rel="noopener">Piši nam</a>
+    </div>
+  </div>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="logo.png" alt="Kaktus Dizajn" width="44" height="44">
-        <h4>Kaktus Dizajn</h4>
-        <p>Vrhunski grafički dizajn iz Beograda.</p>
-      </div>
-      <div class="footer-col"><h4>Usluge</h4><ul><li><a href="logo-dizajn.html">Logo dizajn</a></li><li><a href="brending.html">Brending</a></li><li><a href="meta-reklame.html">Meta reklame</a></li><li><a href="portfolio.html">Portfolio</a></li></ul></div>
-      <div class="footer-col"><h4>Sajt</h4><ul><li><a href="o-nama.html">O nama</a></li><li><a href="blog.html">Blog</a></li><li><a href="politika-privatnosti.html">Politika privatnosti</a></li></ul></div>
-      <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="https://wa.me/381600750754">+381 60 075 0754</a></li><li><a href="https://instagram.com/kaktusdizajn">@kaktusdizajn</a></li><li>Beograd, Srbija</li></ul></div>
-    </div>
-    <div class="footer-bottom"><p>© <span data-year>2026</span> Kaktus Dizajn.</p><div class="footer-social"><a href="https://instagram.com/kaktusdizajn">IG</a><a href="https://wa.me/381600750754">WA</a></div></div>
-  </div>
-</footer>
+<footer class="ftr">© 2026 Kaktus Dizajn · Beograd</footer>
 
-<script src="script.js" defer></script>
+<script>
+(function(){
+  'use strict';
+
+  /* tema */
+  var rootEl = document.documentElement;
+  var metaTheme = document.getElementById('metaTheme');
+  document.getElementById('themeToggle').addEventListener('click', function(){
+    var n = rootEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    rootEl.setAttribute('data-theme', n);
+    if (metaTheme) metaTheme.setAttribute('content', n === 'dark' ? '#2A2E33' : '#F0E9E0');
+    try { localStorage.setItem('kaktus-theme', n); } catch(e){}
+    boje();  /* igra preuzme boje nove teme */
+  });
+
+  /* ==========================================================
+     KAKTUS RUNNER: dinosaurus preskače kaktuse.
+     Ne kreće dok igrač ne pritisne, pa poštuje i reduced-motion.
+     ========================================================== */
+  var cv = document.getElementById('igra');
+  var cx = cv.getContext('2d');
+  var W = 688, H = 220, TLO = 178;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  cv.width = W * dpr; cv.height = H * dpr;
+  cx.scale(dpr, dpr);
+
+  var C = {};
+  function boje(){
+    var s = getComputedStyle(rootEl);
+    C.dino  = s.getPropertyValue('--text-main').trim() || '#3a2a1a';
+    C.kakt  = s.getPropertyValue('--acc').trim() || '#227747';
+    C.tlo   = s.getPropertyValue('--text-faint').trim() || '#907a5f';
+    C.meko  = s.getPropertyValue('--text-soft').trim() || '#6e5340';
+  }
+  boje();
+
+  /* dino: piksel matrica 11x12 (1 = telo), noge se smenjuju */
+  var DINO = [
+    '00000011111',
+    '00000111111',
+    '00000110111',
+    '00000111111',
+    '00000111100',
+    '01101111110',
+    '01111111100',
+    '11111111100',
+    '01111111000',
+    '00111110000',
+    '00110110000',
+    '00100100000'
+  ];
+  var PX = 4.6;
+
+  var dinoY, brzY, skace, mrtav, start, score, hi, brzina, kakti, tick, nogeF;
+  try { hi = +(localStorage.getItem('kaktus-hi') || 0); } catch(e){ hi = 0; }
+  document.getElementById('hi').textContent = hi;
+
+  function reset(){
+    dinoY = 0; brzY = 0; skace = false; mrtav = false; start = false;
+    score = 0; brzina = 4.6; kakti = []; tick = 0; nogeF = 0;
+    crtaj();
+  }
+
+  function nacrtajDino(x, yTlo){
+    var y0 = yTlo - DINO.length * PX - dinoY;
+    cx.fillStyle = C.dino;
+    for (var r = 0; r < DINO.length; r++){
+      for (var c = 0; c < 11; c++){
+        if (DINO[r][c] === '1'){
+          /* animacija nogu: u trku naizmenično skrati po jednu */
+          if (!skace && r >= 10 && ((nogeF && c < 5) || (!nogeF && c >= 5))) continue;
+          cx.fillRect(x + c * PX, y0 + r * PX, PX - .6, PX - .6);
+        }
+      }
+    }
+  }
+
+  function nacrtajKaktus(k){
+    cx.fillStyle = C.kakt;
+    var x = k.x, h = k.h, w = 12, y = TLO - h;
+    cx.fillRect(x, y, w, h);                          /* stablo */
+    cx.fillRect(x - 8, y + h * .3, 8, 5);             /* levi krak */
+    cx.fillRect(x - 8, y + h * .3 - 12, 5, 16);
+    cx.fillRect(x + w, y + h * .45, 8, 5);            /* desni krak */
+    cx.fillRect(x + w + 3, y + h * .45 - 10, 5, 14);
+  }
+
+  function crtaj(){
+    cx.clearRect(0, 0, W, H);
+    /* tlo */
+    cx.fillStyle = C.tlo;
+    cx.fillRect(0, TLO, W, 2);
+    for (var i = 0; i < 14; i++){
+      var gx = ((i * 60) - (tick * brzina) % 60);
+      cx.fillRect(gx, TLO + 8, 18, 2);
+    }
+    kakti.forEach(nacrtajKaktus);
+    nacrtajDino(52, TLO);
+    if (mrtav){
+      cx.fillStyle = C.meko;
+      cx.font = '700 15px "JetBrains Mono", monospace';
+      cx.textAlign = 'center';
+      cx.fillText('GAME OVER · SPACE ILI TAP ZA NOVU', W / 2, 82);
+    }
+  }
+
+  function petlja(){
+    if (!start || mrtav) return;
+    tick++;
+    if (tick % 6 === 0) nogeF = !nogeF;
+
+    /* fizika skoka */
+    if (skace){
+      dinoY += brzY;
+      brzY -= 1.35;
+      if (dinoY <= 0){ dinoY = 0; skace = false; }
+    }
+
+    /* kakti */
+    if (!kakti.length || kakti[kakti.length - 1].x < W - (240 + Math.random() * 260)){
+      kakti.push({ x: W + 20, h: 26 + Math.floor(Math.random() * 3) * 12 });
+    }
+    kakti.forEach(function(k){ k.x -= brzina; });
+    kakti = kakti.filter(function(k){ return k.x > -40; });
+
+    /* sudar (uprošćene kutije) */
+    var dL = 52 + 8, dR = 52 + 11 * PX - 8, dDno = TLO - dinoY;
+    kakti.forEach(function(k){
+      if (dR > k.x - 6 && dL < k.x + 18 && dDno > TLO - k.h + 6 && dinoY < k.h - 4){
+        mrtav = true;
+        if (score > hi){
+          hi = score;
+          try { localStorage.setItem('kaktus-hi', hi); } catch(e){}
+          document.getElementById('hi').textContent = hi;
+        }
+      }
+    });
+
+    score++;
+    if (score % 300 === 0) brzina += .55;
+    document.getElementById('score').textContent = score;
+
+    crtaj();
+    if (!mrtav) requestAnimationFrame(petlja);
+    else crtaj();
+  }
+
+  function akcija(){
+    if (!start || mrtav){
+      reset();
+      start = true;
+      document.getElementById('hint').textContent = 'SPACE ILI TAP = SKOK';
+      requestAnimationFrame(petlja);
+      return;
+    }
+    if (!skace){ skace = true; brzY = 13.5; }
+  }
+
+  document.addEventListener('keydown', function(e){
+    if (e.code === 'Space' || e.code === 'ArrowUp'){ e.preventDefault(); akcija(); }
+  });
+  cv.addEventListener('pointerdown', akcija);
+
+  reset();
+})();
+</script>
 </body>
 </html>
