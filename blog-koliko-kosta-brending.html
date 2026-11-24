@@ -391,7 +391,8 @@ figure{margin:0}
   ::view-transition-old(root),::view-transition-new(root),
   ::view-transition-old(site-header),::view-transition-new(site-header){animation:none}
 }
-.crumbs{display:flex;flex-wrap:wrap;gap:8px;font-size:14px;opacity:.72;margin-bottom:16px}.crumbs a{color:inherit;text-decoration:none}.crumbs a:hover{text-decoration:underline}
+
+.has-rail{display:grid;grid-template-columns:52px 1fr;gap:clamp(20px,4vw,44px);align-items:stretch}.rail{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:28px;padding:14px 0 22px;border-radius:26px;box-shadow:var(--in2)}.rail-back{width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:50%;color:var(--acc);box-shadow:var(--e1);text-decoration:none}.rail-back:hover{box-shadow:var(--in1)}.rail-txt{writing-mode:vertical-rl;transform:rotate(180deg);font-weight:700;font-size:12px;line-height:1;letter-spacing:.22em;text-transform:uppercase;color:var(--text-faint);white-space:nowrap}.has-rail .rail-body>h1:first-child,.has-rail .rail-body .cs-meta+h1{margin-top:0}.has-rail .rail-body .cs-meta+h1{margin-top:30px}@media(max-width:560px){.has-rail{grid-template-columns:40px 1fr;gap:16px}.rail{border-radius:20px;gap:20px}.rail-txt{font-size:10.5px;letter-spacing:.16em}.rail-back{width:30px;height:30px}}
 </style>
 <script type="application/ld+json">
 {
@@ -476,11 +477,12 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
   <!-- ============ ČLANAK ============ -->
   <article class="article-wrap">
     <div class="container">
-      <header class="article-head">
-        <nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a> <span aria-hidden="true">/</span> <a href="/blog.html">Blog</a> <span aria-hidden="true">/</span> <span aria-current="page">Koliko košta brending</span></nav>
-        <span class="readout">20. maj 2026 · 6 min čitanja · Brending</span>
+      <header class="article-head has-rail">
+        <aside class="rail" aria-label="Putanja"><a class="rail-back" href="blog.html" aria-label="Nazad na blog"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a><span class="rail-txt">Blog · Brending</span><span class="rail-txt">20. maj 2026 · 6 min</span></aside>
+        <div class="rail-body">
         <h1>Koliko košta brending u Srbiji - realan vodič kroz cene</h1>
         <p class="article-lead">Najčešće pitanje koje dobijamo: "Koliko košta brending?" Realan odgovor: <strong>između 50€ i 5000€</strong>. Ali to ti ne govori ništa. Hajde da razložim šta dobijaš na svakom nivou cene - bez marketinga, samo realnost.</p>
+        </div>
       </header>
 
       <div class="article-body">
@@ -580,8 +582,7 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
   <section class="section" style="padding-top:0">
     <div class="container">
       <div class="section-head">
-        <span class="readout">Pročitaj još</span>
-        <h2>Slični članci.</h2>
+<h2>Slični članci.</h2>
       </div>
 
       <div class="cards cards-2">
