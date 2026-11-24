@@ -43,13 +43,15 @@ fbq('track', 'PageView');
 <meta property="og:title" content="Izrada one page sajta - od 150€ | Kaktus Dizajn">
 <meta property="og:description" content="Online za 2-5 dana. Hosting 0€. Izračunaj cenu za 2 minuta.">
 <meta property="og:url" content="https://kaktusdizajn.com/sajt.html">
-<meta property="og:image" content="https://kaktusdizajn.com/logo.png">
+<meta property="og:image" content="https://kaktusdizajn.com/og-sajt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Kaktus Dizajn | Vrhunski Grafički Dizajn u Srbiji">
 <meta name="twitter:description" content="Logo, brending i Meta reklame od 30€. Isporuka 48h.">
-<meta name="twitter:image" content="https://kaktusdizajn.com/logo.png">
+<meta name="twitter:image" content="https://kaktusdizajn.com/og-sajt.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -661,6 +663,26 @@ figure{margin:0}
   ::view-transition-old(site-header),::view-transition-new(site-header){animation:none}
 }
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Početna",
+   "item": "https://kaktusdizajn.com/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Izrada sajta",
+   "item": "https://kaktusdizajn.com/sajt.html"
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none"
@@ -945,6 +967,7 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
             <a href="tel:+381600750754">+381 60 075 0754</a>
             <a href="https://wa.me/381600750754" target="_blank" rel="noopener">WhatsApp</a>
             <a href="https://instagram.com/kaktusdizajn" target="_blank" rel="noopener">@kaktusdizajn</a>
+            <a href="https://maps.google.com/?cid=9423045772562586721" target="_blank" rel="noopener">Google profil i recenzije</a>
           </div>
         </div>
       </div>
@@ -1039,6 +1062,9 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
       var sep = /iphone|ipad|ipod|mac/i.test(navigator.userAgent||'') ? '&' : '?';
       location.href = 'sms:+381600750754' + sep + 'body=' + encodeURIComponent(msg);
     }
+    /* Posle otvaranja kanala vodi na stranicu zahvalnosti */
+    var k = method === 'email' ? 'email' : (method === 'whatsapp' ? 'whatsapp' : 'sms');
+    setTimeout(function(){ location.href = 'hvala.html?kanal=' + k + '&izvor=sajt'; }, method === 'whatsapp' ? 400 : 1500);
   };
 
   // init

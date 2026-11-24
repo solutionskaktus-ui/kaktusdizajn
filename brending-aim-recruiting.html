@@ -446,7 +446,34 @@ figure{margin:0}
   ::view-transition-old(root),::view-transition-new(root),
   ::view-transition-old(site-header),::view-transition-new(site-header){animation:none}
 }
+.crumbs{display:flex;flex-wrap:wrap;gap:8px;font-size:14px;opacity:.72;margin-bottom:16px}.crumbs a{color:inherit;text-decoration:none}.crumbs a:hover{text-decoration:underline}
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Početna",
+   "item": "https://kaktusdizajn.com/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Portfolio",
+   "item": "https://kaktusdizajn.com/portfolio.html"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "AIM Recruiting",
+   "item": "https://kaktusdizajn.com/brending-aim-recruiting.html"
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none"
@@ -504,6 +531,7 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
   <!-- ============ CASE STUDY HERO ============ -->
   <section class="cs-hero">
     <div class="container">
+      <nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a> <span aria-hidden="true">/</span> <a href="/portfolio.html">Portfolio</a> <span aria-hidden="true">/</span> <span aria-current="page">AIM Recruiting</span></nav>
       <div class="cs-meta rv">
         <div class="m"><span class="k">Klijent</span><div class="v">AIM Recruiting</div></div>
         <div class="m"><span class="k">Industrija</span><div class="v">US Trucking · Recruitment</div></div>
@@ -881,6 +909,7 @@ src="https://www.facebook.com/tr?id=1731027437892050&ev=PageView&noscript=1"
             <a href="tel:+381600750754">+381 60 075 0754</a>
             <a href="https://wa.me/381600750754" target="_blank" rel="noopener">WhatsApp</a>
             <a href="https://instagram.com/kaktusdizajn" target="_blank" rel="noopener">@kaktusdizajn</a>
+            <a href="https://maps.google.com/?cid=9423045772562586721" target="_blank" rel="noopener">Google profil i recenzije</a>
           </div>
         </div>
       </div>
